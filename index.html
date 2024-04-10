@@ -16,9 +16,27 @@
             }
 
             #top {
-                background: url('images/devopsbg.jpeg') no-repeat center center fixed;
-                background-size: cover;
-            }
+			position: relative;
+			background: url('images/devopsbg.jpeg') no-repeat center center fixed;
+			background-size: cover;
+			}
+
+			#top::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: rgba(0, 0, 0, 0.5); /* Adjust the opacity here */
+				z-index: 1; /* Make sure this is below the background image */
+				pointer-events: none; /* Make sure clicks pass through to the background */
+				transition: background 0.5s ease;
+			}
+
+			#top:hover::before {
+				background: rgba(0, 0, 0, 0.7); /* Adjust the opacity here */
+			}
 
             .slideshow-container {
                 max-width: 1000px;
