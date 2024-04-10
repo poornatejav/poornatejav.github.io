@@ -1847,9 +1847,8 @@ input, select, textarea {
 	form select,
 	form textarea {
 		position: relative;
-		-webkit-appearance: none;
-		display: block;
-		border: 0;
+    	display: block;
+    	border: 0;
 		outline: 0;
 		background: #fff;
 		background: rgba(255, 255, 255, 0.75);
@@ -1862,8 +1861,7 @@ input, select, textarea {
 		-webkit-transition: all 0.35s ease-in-out;
 		-ms-transition: all 0.35s ease-in-out;
 		transition: all 0.35s ease-in-out;
-	}
-
+}
 		form input[type="text"]:focus,
 		form input[type="email"]:focus,
 		form input[type="password"]:focus,
@@ -2631,3 +2629,5 @@ input, select, textarea {
 				}
 
 	}
+
+	
