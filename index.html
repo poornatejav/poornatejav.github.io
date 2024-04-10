@@ -1,253 +1,257 @@
 <!DOCTYPE HTML>
 <!--
-	Prologue by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+    Prologue by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>Poorna Teja Vengala</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+    <head>
+        <title>Poorna Teja Vengala</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <style>
+            #header {
+                background-color: #f4f4f4; /* Light Gray Background Color */
+            }
 
-		<!-- Header -->
-		<div id="header">
-			<div class="top">
-				<!-- Logo -->
-				<div id="logo">
-					<h1 id="title">Poorna Teja Vengala</h1>
-					<p>DevOps Engineer</p>
-				</div>
-				<!-- Nav -->
-				<nav id="nav">
-					<ul>
-						<li><a href="#top" id="top-link"><span class="icon solid fa-home">Intro</span></a></li>
-						<li><a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th">Portfolio</span></a></li>
-						<li><a href="#about" id="about-link"><span class="icon solid fa-user">About Me</span></a></li>
-					</ul>
-				</nav>
-			</div>
-			<div class="bottom">
-				<!-- Social Icons -->
-				<ul class="icons">
-					<li><a href="#" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
-					<li><a href="#" class="icon brands fa-hackerrank"><span class="label">Hackerrank</span></a></li>
-					<li><a href="https://github.com/poornatejav" class="icon brands fa-github"><span class="label">Github</span></a></li>
-					<li><a href="mailto:poornateja340@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-				</ul>
-			</div>
-		</div>
+            #top {
+                background: url('images/devopsbg.jpeg') no-repeat center center fixed;
+                background-size: cover;
+            }
 
-		<!-- Main -->
-		<div id="main">
-			<!-- Intro -->
-			<section id="top" class="one dark cover">
-				<div class="container">
-					<header>
-						<h2 class="alt">Hi! I'm <strong>Poorna Teja</strong>, </h2>
-						<p>DevOps Engineer with over 4 years of experience in designing efficient cloud infrastructures and enhancing deployment processes. Actively pursuing new opportunities to drive innovation in cloud infrastructure and automation to meet future challenges..</p>
-					</header>
-					<footer>
-						<a href="#portfolio" class="button scrolly">Portfolio</a>
-					</footer>
-				</div>
-			</section>
+            .slideshow-container {
+                max-width: 1000px;
+                position: relative;
+                margin: auto;
+            }
 
-			<!-- Portfolio -->
-<section id="portfolio" class="two">
-    <div class="container">
-        <header>
-            <h2>Portfolio</h2>
-        </header>
-        <p>Proficient in Different Cloud Technologies like Amazon Web Services, Golang, Python, Shell, Bash, SQL, MySQL, PostgreSQL, MongoDB, DynamoDB, Terraform, Docker, Kubernetes, AKeyless, Jenkins, Git, GitLab, Ansible, Prometheus, Grafana, Helm, Istio, SonarQube, Trivy, Artifactory. Certified in different Cloud Computing Tools includes AWS Solutions Architect Associate and GitLab CI Fundamentals. Experienced in designing resilient cloud environments, Docker containerization, Kubernetes adoption, automation with Python/Boto3 and Golang, infrastructure deployment as Code, backup strategies, and security protocols.</p>
+            .mySlides {
+                display: none;
+            }
 
-        <div class="row">
-            <div class="col-4 col-12-mobile">
-                <article class="item zigzag-item">
-                    <a href="https://yourlink1.com" target="_blank" class="image fit"><img src="images/OCIDOP2023OPN__1_-removebg-preview.png" alt="" /></a>
-                    <header>
-                        <h3>Oracle Certified DevOps Professional</h3>
-                    </header>
-                </article>
-                <article class="item">
-                    <a href="https://badgr.com/public/assertions/E0dIOPm5STyMODDQcld6iA?identity__email=poornateja340@gmail.com" target="_blank" class="image fit"><img src="images/Postman - Postman API Fundamentals Student Expert - 2024-03-08.png" alt="" /></a>
-                    <header>
-                        <h3>Postman API Expert</h3>
-                    </header>
-                </article>
+            /* Next & previous buttons */
+            .prev, .next {
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                width: auto;
+                margin-top: -22px;
+                padding: 16px;
+                color: white;
+                font-weight: bold;
+                font-size: 18px;
+                transition: 0.6s ease;
+                border-radius: 0 3px 3px 0;
+            }
+
+            /* Position the "next button" to the right */
+            .next {
+                right: 0;
+                border-radius: 3px 0 0 3px;
+            }
+
+            /* On hover, add a black background color with a little bit see-through */
+            .prev:hover, .next:hover {
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+
+            /* The dots/bullets/indicators */
+            .dot {
+                cursor: pointer;
+                height: 15px;
+                width: 15px;
+                margin: 0 2px;
+                background-color: #bbb;
+                border-radius: 50%;
+                display: inline-block;
+                transition: background-color 0.6s ease;
+            }
+
+            .active, .dot:hover {
+                background-color: #717171;
+            }
+        </style>
+    </head>
+    <body class="is-preload">
+
+        <!-- Header -->
+        <div id="header">
+            <div class="top">
+                <!-- Logo -->
+                <div id="logo">
+                    <h1 id="title">Poorna Teja Vengala</h1>
+                    <p>DevOps Engineer</p>
+                </div>
+                <!-- Nav -->
+                <nav id="nav">
+                    <ul>
+                        <li><a href="#top" id="top-link"><span class="icon solid fa-home">Intro</span></a></li>
+                        <li><a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th">Portfolio</span></a></li>
+                        <li><a href="#about" id="about-link"><span class="icon solid fa-user">About Me</span></a></li>
+                    </ul>
+                </nav>
             </div>
-            <div class="col-4 col-12-mobile">
-                <article class="item zigzag-item">
-                    <a href="https://www.credly.com/badges/5cc0f7e2-10d0-4123-bce8-ade4885278c2/public_url" target="_blank" class="image fit"><img src="images/AWS-SA.png" alt="" /></a>
-                    <header>
-                        <h3>AWS Certified Solution Architect</h3>
-                    </header>
-                </article>
-                <article class="item">
-                    <a href="https://www.credly.com/badges/b37012b9-1ead-40f3-9335-4eefe17294b0/public_url" target="_blank" class="image fit"><img src="images/Docker.png" alt="" /></a>
-                    <header>
-                        <h3>Docker Essentials</h3>
-                    </header>
-                </article>
-            </div>
-            <div class="col-4 col-12-mobile">
-                <article class="item zigzag-item">
-                    <a href="https://www.credly.com/badges/9c77c72e-d87c-419b-800b-550ae27be226/public_url" target="_blank" class="image fit"><img src="images/aws net.png" alt="" /></a>
-                    <header>
-                        <h3>Networking Core Knowledge</h3>
-                    </header>
-                </article>
-                <article class="item">
-                    <a href="https://www.credly.com/badges/ffb6ceaa-3ee1-4eab-9835-35e2f4e2d9c7/public_url" target="_blank" class="image fit"><img src="images/K8.png" alt="" /></a>
-                    <header>
-                        <h3>Kubernetes Fundamentals</h3>
-                    </header>
-                </article>
+            <div class="bottom">
+                <!-- Social Icons -->
+                <ul class="icons">
+                    <li><a href="https://www.linkedin.com/in/teja251b7b116/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+                    <li><a href="https://www.hackerrank.com/profile/poornateja340" class="icon brands fa-hackerrank"><span class="label">Hackerrank</span></a></li>
+                    <li><a href="https://github.com/poornatejav" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                    <li><a href="mailto:poornateja340@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+                </ul>
             </div>
         </div>
-    </div>
-</section>
 
+        <!-- Main -->
+        <div id="main">
+            <!-- Intro -->
+            <section id="top" class="one dark cover">
+                <div class="container">
+                    <header>
+                        <h2 class="alt">Hi! I'm <strong>Poorna Teja</strong>, </h2>
+                        <p>DevOps Engineer with over 4 years of experience in designing efficient cloud infrastructures and enhancing deployment processes. Actively pursuing new opportunities to drive innovation in cloud infrastructure and automation to meet future challenges.</p>
+                    </header>
+                    <footer>
+                        <a href="#about" class="button scrolly">About Me</a>
+                    </footer>
+                </div>
+            </section>
 
-			<!-- About Me -->
-<section id="about" class="three">
-    <div class="container">
-        <header>
-            <h2>About Me</h2>
-        </header>
-        <p>Hi, I'm PoornaTeja Vengala, a passionate DevOps Engineer with hands-on experience in industry-leading technologies. With a strong background in AWS services, Python programming, and infrastructure automation, I specialize in creating highly efficient and scalable cloud environments. My expertise includes automating CI/CD pipelines, optimizing cloud infrastructure, and implementing robust security measures. I hold a Master's degree in Computer Science from the University of Illinois and am AWS Certified Solutions Architect Associate. I'm eager to leverage my skills and experience to drive innovation and efficiency in DevOps and Infrastructure Automation roles.</p>
-        <!-- Slideshow Container -->
-        <div class="slideshow-container">
-            <div class="mySlides fade">
-                <img src="images/gitlab.png" style="width:100%" alt="PoornaTeja Vengala" />
-            </div>
-            <div class="mySlides fade">
-                <img src="images/python.png" style="width:100%" alt="Image 2" />
-            </div>
-            <div class="mySlides fade">
-                <img src="images/scrum.png" style="width:100%" alt="Image 3" />
-            </div>
-            <!-- Next and Previous Button -->
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            <!-- Portfolio -->
+            <section id="portfolio" class="two">
+                <div class="container">
+                    <header>
+                        <h2>Portfolio</h2>
+                    </header>
+                    <p>Proficient in Different Cloud Technologies like Amazon Web Services, Golang, Python, Shell, Bash, SQL, MySQL, PostgreSQL, MongoDB, DynamoDB, Terraform, Docker, Kubernetes, AKeyless, Jenkins, Git, GitLab, Ansible, Prometheus, Grafana, Helm, Istio, SonarQube, Trivy, Artifactory. Certified in different Cloud Computing Tools includes AWS Solutions Architect Associate and GitLab CI Fundamentals. Experienced in designing resilient cloud environments, Docker containerization, Kubernetes adoption, automation with Python/Boto3 and Golang, infrastructure deployment as Code, backup strategies, and security protocols.</p>
+
+                    <div class="row">
+                        <div class="col-4 col-12-mobile">
+                            <article class="item zigzag-item">
+                                <a href="https://yourlink1.com" target="_blank" class="image fit"><img src="images/OCIDOP2023OPN__1_-removebg-preview.png" alt="" /></a>
+                                <header>
+                                    <h3>Oracle Certified DevOps Professional</h3>
+                                </header>
+                            </article>
+                            <article class="item">
+                                <a href="https://badgr.com/public/assertions/E0dIOPm5STyMODDQcld6iA?identity__email=poornateja340@gmail.com" target="_blank" class="image fit"><img src="images/Postman - Postman API Fundamentals Student Expert - 2024-03-08.png" alt="" /></a>
+                                <header>
+                                    <h3>Postman API Expert</h3>
+                                </header>
+                            </article>
+                        </div>
+                        <div class="col-4 col-12-mobile">
+                            <article class="item zigzag-item">
+                                <a href="https://www.credly.com/badges/5cc0f7e2-10d0-4123-bce8-ade4885278c2/public_url" target="_blank" class="image fit"><img src="images/AWS-SA.png" alt="" /></a>
+                                <header>
+                                    <h3>AWS Certified Solution Architect</h3>
+                                </header>
+                            </article>
+                            <article class="item">
+                                <a href="https://www.credly.com/badges/b37012b9-1ead-40f3-9335-4eefe17294b0/public_url" target="_blank" class="image fit"><img src="images/Docker.png" alt="" /></a>
+                                <header>
+                                    <h3>Docker Essentials</h3>
+                                </header>
+                            </article>
+                        </div>
+                        <div class="col-4 col-12-mobile">
+                            <article class="item zigzag-item">
+                                <a href="https://www.credly.com/badges/9c77c72e-d87c-419b-800b-550ae27be226/public_url" target="_blank" class="image fit"><img src="images/aws net.png" alt="" /></a>
+                                <header>
+                                    <h3>Networking Core Knowledge</h3>
+                                </header>
+                            </article>
+                            <article class="item">
+                                <a href="https://www.credly.com/badges/ffb6ceaa-3ee1-4eab-9835-35e2f4e2d9c7/public_url" target="_blank" class="image fit"><img src="images/K8.png" alt="" /></a>
+                                <header>
+                                    <h3>Kubernetes Fundamentals</h3>
+                                </header>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Me -->
+            <section id="about" class="three">
+                <div class="container">
+                    <header>
+                        <h2>About Me</h2>
+                    </header>
+                    <p>Hi, I'm PoornaTeja Vengala, a passionate DevOps Engineer with hands-on experience in industry-leading technologies. With a strong background in AWS services, Python programming, and infrastructure automation, I specialize in creating highly efficient and scalable cloud environments. My expertise includes automating CI/CD pipelines, optimizing cloud infrastructure, and implementing robust security measures. I hold a Master's degree in Computer Science from the University of Illinois and am AWS Certified Solutions Architect Associate. I'm eager to leverage my skills and experience to drive innovation and efficiency in DevOps and Infrastructure Automation roles.</p>
+                    <!-- Slideshow Container -->
+                    <div class="slideshow-container">
+                        <div class="mySlides fade">
+                            <img src="images/gitlab.png" style="width:100%" alt="PoornaTeja Vengala" />
+                        </div>
+                        <div class="mySlides fade">
+                            <img src="images/python.png" style="width:100%" alt="Image 2" />
+                        </div>
+                        <div class="mySlides fade">
+                            <img src="images/scrum.png" style="width:100%" alt="Image 3" />
+                        </div>
+                        <!-- Next and Previous Button -->
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    </div>
+                    <br />
+                    <!-- The dots/circles -->
+                    <div style="text-align:center">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                    </div>
+                </div>
+            </section>
         </div>
-        <br />
-        <!-- The dots/circles -->
-        <div style="text-align:center">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
+
+        <!-- Footer -->
+        <div id="footer">
+            <!-- Copyright -->
+            <ul class="copyright">
+                <li>&copy; Poorna Teja Vengala. All rights reserved.</li>
+                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            </ul>
         </div>
-    </div>
-</section>
 
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
 
-		</div>
+        <!-- JavaScript for Slideshow -->
+        <script>
+            var slideIndex = 1;
+            showSlides(slideIndex);
 
-		<!-- Footer -->
-		<div id="footer">
-			<!-- Copyright -->
-			<ul class="copyright">
-				<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-			</ul>
-		</div>
+            function plusSlides(n) {
+                showSlides(slideIndex += n);
+            }
 
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+            function currentSlide(n) {
+                showSlides(slideIndex = n);
+            }
 
-		<!-- JavaScript for Slideshow -->
-		<script>
-			var slideIndex = 1;
-			showSlides(slideIndex);
-
-			function plusSlides(n) {
-				showSlides(slideIndex += n);
-			}
-
-			function currentSlide(n) {
-				showSlides(slideIndex = n);
-			}
-
-			function showSlides(n) {
-				var i;
-				var slides = document.getElementsByClassName("mySlides");
-				var dots = document.getElementsByClassName("dot");
-				if (n > slides.length) { slideIndex = 1 }
-				if (n < 1) { slideIndex = slides.length }
-				for (i = 0; i < slides.length; i++) {
-					slides[i].style.display = "none";
-				}
-				for (i = 0; i < dots.length; i++) {
-					dots[i].className = dots[i].className.replace(" active", "");
-				}
-				slides[slideIndex - 1].style.display = "block";
-				dots[slideIndex - 1].className += " active";
-			}
-		</script>
-
-		<!-- CSS for Slideshow -->
-		<style>
-			.slideshow-container {
-				max-width: 1000px;
-				position: relative;
-				margin: auto;
-			}
-
-			.mySlides {
-				display: none;
-			}
-
-			/* Next & previous buttons */
-			.prev, .next {
-				cursor: pointer;
-				position: absolute;
-				top: 50%;
-				width: auto;
-				margin-top: -22px;
-				padding: 16px;
-				color: white;
-				font-weight: bold;
-				font-size: 18px;
-				transition: 0.6s ease;
-				border-radius: 0 3px 3px 0;
-			}
-
-			/* Position the "next button" to the right */
-			.next {
-				right: 0;
-				border-radius: 3px 0 0 3px;
-			}
-
-			/* On hover, add a black background color with a little bit see-through */
-			.prev:hover, .next:hover {
-				background-color: rgba(0, 0, 0, 0.8);
-			}
-
-			/* The dots/bullets/indicators */
-			.dot {
-				cursor: pointer;
-				height: 15px;
-				width: 15px;
-				margin: 0 2px;
-				background-color: #bbb;
-				border-radius: 50%;
-				display: inline-block;
-				transition: background-color 0.6s ease;
-			}
-
-			.active, .dot:hover {
-				background-color: #717171;
-			}
-		</style>
-
-	</body>
+            function showSlides(n) {
+                var i;
+                var slides = document.getElementsByClassName("mySlides");
+                var dots = document.getElementsByClassName("dot");
+                if (n > slides.length) { slideIndex = 1 }
+                if (n < 1) { slideIndex = slides.length }
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndex - 1].style.display = "block";
+                dots[slideIndex - 1].className += " active";
+            }
+        </script>
+    </body>
 </html>
