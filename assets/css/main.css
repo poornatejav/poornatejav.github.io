@@ -175,7 +175,7 @@ input, select, textarea {
 	}
 
 		a:hover {
-			color: #E27689;
+			color: #4b78b4;
 			border-bottom-color: rgba(255, 255, 255, 0);
 		}
 
@@ -2250,15 +2250,15 @@ input, select, textarea {
 			}
 
 			#main > section.two {
-				background-color: #f5fafa;
+				background-color: #ad7726c1;
 			}
 
 			#main > section.three {
-				background-color: #ecf1f1;
+				background-color: #ad7726c1;
 			}
 
 			#main > section.four {
-				background-color: #e8edec;
+				background-color: #ad7726c1;
 			}
 
 /* Wide */
