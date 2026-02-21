@@ -10,18 +10,18 @@
     />
     <style>
       :root {
-        --bg: #f4f8ff;
-        --panel: rgba(255, 255, 255, 0.84);
-        --line: rgba(94, 132, 214, 0.2);
-        --text: #162246;
-        --muted: #556696;
-        --brand: #3f6eff;
-        --cyan: #16c6d3;
-        --violet: #7f6cff;
-        --ok: #1ebd7a;
-        --warn: #f1b846;
-        --bad: #ee5f72;
-        --shadow: 0 18px 44px rgba(35, 62, 132, 0.12);
+        --bg: #060a14;
+        --panel: rgba(10, 18, 35, 0.72);
+        --line: rgba(108, 150, 219, 0.24);
+        --text: #e7efff;
+        --muted: #9ab0d6;
+        --brand: #1f7af0;
+        --cyan: #14c4bd;
+        --violet: #5f7cf4;
+        --ok: #1dbd84;
+        --warn: #e9b348;
+        --bad: #ea5d6d;
+        --shadow: 0 20px 46px rgba(26, 53, 116, 0.12);
       }
 
       * {
@@ -37,8 +37,10 @@
         font-family: Inter, Poppins, 'Segoe UI', system-ui, sans-serif;
         color: var(--text);
         background:
-          radial-gradient(circle at 7% 0%, rgba(89, 129, 255, 0.16), transparent 32%),
-          radial-gradient(circle at 92% 2%, rgba(22, 198, 211, 0.14), transparent 36%),
+          radial-gradient(circle at 6% -3%, rgba(31, 122, 240, 0.32), transparent 36%),
+          radial-gradient(circle at 90% 0%, rgba(20, 196, 189, 0.24), transparent 38%),
+          radial-gradient(circle at 50% 120%, rgba(95, 80, 220, 0.2), transparent 50%),
+          linear-gradient(180deg, rgba(7, 13, 28, 0.97), rgba(6, 10, 20, 0.99)),
           var(--bg);
       }
 
@@ -61,7 +63,7 @@
         padding: 0.78rem 1rem;
         border: 1px solid var(--line);
         border-radius: 1rem;
-        background: var(--panel);
+        background: rgba(9, 16, 31, 0.72);
         backdrop-filter: blur(8px);
         box-shadow: var(--shadow);
         display: flex;
@@ -105,7 +107,7 @@
       }
 
       .topnav a:hover {
-        color: var(--text);
+        color: #f3f8ff;
         border-color: rgba(63, 110, 255, 0.42);
       }
 
@@ -139,6 +141,20 @@
 
       .hero-copy {
         padding: clamp(1rem, 3vw, 2.2rem);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-copy::before {
+        content: '';
+        position: absolute;
+        width: 18rem;
+        height: 18rem;
+        right: -8rem;
+        top: -8rem;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(63, 110, 255, 0.24), rgba(63, 110, 255, 0));
+        pointer-events: none;
       }
 
       .eyebrow {
@@ -160,6 +176,8 @@
       h1 {
         font-size: clamp(2rem, 4.9vw, 3.8rem);
         margin-top: 0.8rem;
+        letter-spacing: -0.03em;
+        text-wrap: balance;
       }
 
       h2 {
@@ -185,10 +203,34 @@
         letter-spacing: 0.02em;
         border: 1px solid rgba(63, 110, 255, 0.2);
         background: rgba(63, 110, 255, 0.08);
-        color: #1f47cc;
+        color: #e2ecff;
+        border-color: rgba(96, 163, 255, 0.28);
+        background: rgba(64, 119, 217, 0.24);
         border-radius: 999px;
         padding: 0.3rem 0.6rem;
         transition: 0.35s ease;
+        opacity: 0;
+        transform: translateY(6px) scale(0.98);
+        animation: tokenIn 0.55s ease forwards;
+      }
+
+      .signal-token:nth-child(1) {
+        animation-delay: 0.15s;
+      }
+
+      .signal-token:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+
+      .signal-token:nth-child(3) {
+        animation-delay: 0.66s;
+      }
+
+      @keyframes tokenIn {
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
       }
 
       .signal-token.alert {
@@ -224,12 +266,12 @@
       .btn-primary {
         color: #fff;
         border-color: transparent;
-        background: linear-gradient(135deg, var(--brand), #4374ff);
+        background: linear-gradient(135deg, #1f7af0, #21a5ce);
       }
 
       .btn-secondary {
-        color: var(--text);
-        background: rgba(255, 255, 255, 0.7);
+        color: #dbe7ff;
+        background: rgba(11, 20, 38, 0.7);
       }
 
       .hero-map-wrap {
@@ -237,12 +279,186 @@
         min-height: 22rem;
         position: relative;
         overflow: hidden;
+        isolation: isolate;
+      }
+
+      .hero-map-wrap::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 22% 16%, rgba(127, 108, 255, 0.16), rgba(127, 108, 255, 0)),
+          radial-gradient(circle at 84% 76%, rgba(22, 198, 211, 0.15), rgba(22, 198, 211, 0)),
+          linear-gradient(165deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.05));
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .hero-map-wrap::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(rgba(81, 122, 218, 0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(81, 122, 218, 0.08) 1px, transparent 1px);
+        background-size: 34px 34px;
+        mask-image: radial-gradient(circle at 50% 48%, #000 45%, transparent 95%);
+        z-index: 0;
+        pointer-events: none;
       }
 
       #hero-map {
         width: 100%;
         height: 100%;
         display: block;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-console {
+        position: relative;
+        z-index: 2;
+        min-height: 100%;
+        border: 1px solid rgba(96, 130, 205, 0.24);
+        border-radius: 1rem;
+        background: linear-gradient(165deg, rgba(10, 19, 37, 0.92), rgba(12, 22, 44, 0.84));
+        box-shadow: inset 0 0 0 1px rgba(150, 187, 255, 0.16);
+        padding: 0.9rem;
+        display: grid;
+        gap: 0.66rem;
+        align-content: start;
+      }
+
+      .console-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      .console-top strong {
+        font-size: 0.74rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #89baff;
+      }
+
+      .console-ping {
+        font-size: 0.68rem;
+        color: #9fd5ff;
+        border: 1px solid rgba(87, 123, 207, 0.25);
+        border-radius: 999px;
+        padding: 0.2rem 0.46rem;
+        background: rgba(12, 22, 42, 0.82);
+      }
+
+      .console-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.55rem;
+      }
+
+      .console-grid article {
+        border: 1px solid rgba(96, 130, 205, 0.25);
+        border-radius: 0.72rem;
+        background: rgba(14, 25, 48, 0.82);
+        padding: 0.5rem;
+      }
+
+      .console-grid span {
+        display: block;
+        font-size: 0.64rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #94a8d0;
+      }
+
+      .console-grid b {
+        display: block;
+        margin-top: 0.2rem;
+        color: #d8e6ff;
+      }
+
+      .console-stream {
+        border: 1px solid rgba(96, 130, 205, 0.22);
+        border-radius: 0.74rem;
+        background: rgba(12, 22, 43, 0.78);
+        padding: 0.58rem;
+        display: grid;
+        gap: 0.4rem;
+      }
+
+      .console-stream small {
+        display: block;
+        font-size: 0.67rem;
+        color: #b1c3e5;
+      }
+
+      .console-stream small::before {
+        content: '●';
+        font-size: 0.46rem;
+        margin-right: 0.4rem;
+        color: #14c4bd;
+        vertical-align: middle;
+      }
+
+      .console-intro {
+        border: 1px solid rgba(95, 129, 205, 0.2);
+        border-radius: 0.74rem;
+        background: rgba(12, 23, 43, 0.82);
+        padding: 0.58rem;
+      }
+
+      .console-intro p {
+        margin: 0;
+        font-size: 0.84rem;
+        color: #b6c9ea;
+        line-height: 1.5;
+      }
+
+      .hero-map-head {
+        position: absolute;
+        z-index: 3;
+        left: 1rem;
+        right: 1rem;
+        top: 0.7rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+        pointer-events: none;
+      }
+
+      .hero-map-title {
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #8abaff;
+        font-weight: 800;
+      }
+
+      .hero-health {
+        display: flex;
+        gap: 0.45rem;
+        flex-wrap: wrap;
+      }
+
+      .hero-health span {
+        border: 1px solid rgba(92, 121, 196, 0.22);
+        border-radius: 999px;
+        background: rgba(10, 20, 37, 0.82);
+        color: #c6d7f3;
+        padding: 0.17rem 0.42rem;
+        font-size: 0.62rem;
+        font-weight: 700;
+      }
+
+      .hero-health i {
+        width: 0.48rem;
+        height: 0.48rem;
+        display: inline-block;
+        border-radius: 50%;
+        margin-right: 0.28rem;
       }
 
       .cluster-tooltip {
@@ -250,17 +466,18 @@
         pointer-events: none;
         z-index: 5;
         min-width: 170px;
-        max-width: 210px;
+        max-width: 240px;
         border: 1px solid rgba(91, 131, 230, 0.45);
-        border-radius: 0.7rem;
-        background: rgba(15, 24, 47, 0.9);
+        border-radius: 0.8rem;
+        background: rgba(12, 22, 44, 0.9);
+        box-shadow: 0 18px 28px rgba(3, 8, 21, 0.35);
         color: #dce8ff;
-        padding: 0.5rem 0.6rem;
+        padding: 0.54rem 0.64rem;
         font-size: 0.75rem;
         line-height: 1.5;
         opacity: 0;
         transform: translateY(6px);
-        transition: opacity 0.18s ease, transform 0.18s ease;
+        transition: opacity 0.22s ease, transform 0.22s ease;
       }
 
       .cluster-tooltip.show {
@@ -273,6 +490,14 @@
         font-size: 0.82rem;
         margin-bottom: 0.22rem;
         color: #7bc8ff;
+      }
+
+      .cluster-tooltip .meta {
+        color: #9eb5e5;
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 0.16rem;
       }
 
       .lead {
@@ -353,22 +578,63 @@
         padding: 1rem;
       }
 
-      #ops-map,
-      #mini-map {
+      #live-intel-map {
         width: 100%;
         display: block;
         border: 1px solid var(--line);
         border-radius: 0.95rem;
-        background: rgba(236, 244, 255, 0.72);
+        background: rgba(10, 18, 33, 0.72);
       }
 
-      #ops-map {
+      .intel-strip {
+        margin-top: 0.44rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+
+      .intel-strip span {
+        border: 1px solid rgba(99, 152, 228, 0.28);
+        border-radius: 999px;
+        background: rgba(9, 20, 39, 0.72);
+        color: #b7cae8;
+        font-size: 0.66rem;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        padding: 0.16rem 0.44rem;
+      }
+
+      #live-intel-map {
         height: 19rem;
       }
 
-      #mini-map {
-        height: 6.8rem;
-        margin-top: 0.72rem;
+      .intel-meta {
+        margin-top: 0.66rem;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.55rem;
+      }
+
+      .intel-meta article {
+        border: 1px solid rgba(96, 130, 205, 0.22);
+        border-radius: 0.72rem;
+        background: rgba(12, 23, 44, 0.82);
+        padding: 0.48rem;
+      }
+
+      .intel-meta span {
+        display: block;
+        font-size: 0.63rem;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: #96acd4;
+      }
+
+      .intel-meta b {
+        display: block;
+        color: #d7e5ff;
+        margin-top: 0.18rem;
+        font-size: 0.95rem;
       }
 
       .state-legend {
@@ -387,6 +653,51 @@
         margin-right: 0.34rem;
       }
 
+      .support-panel {
+        margin-top: 0.78rem;
+        border: 1px solid rgba(106, 138, 210, 0.28);
+        border-radius: 0.9rem;
+        background: linear-gradient(155deg, rgba(16, 27, 48, 0.88), rgba(10, 19, 34, 0.88));
+        padding: 0.72rem 0.8rem;
+        box-shadow: inset 0 0 0 1px rgba(162, 196, 245, 0.11);
+      }
+
+      .support-panel h4 {
+        margin: 0;
+        font-size: 0.79rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #8cb8ff;
+      }
+
+      .think-steps {
+        margin: 0.58rem 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.48rem;
+      }
+
+      .think-steps li {
+        border: 1px solid rgba(98, 124, 186, 0.25);
+        border-radius: 0.7rem;
+        background: rgba(13, 23, 43, 0.76);
+        padding: 0.44rem 0.5rem;
+        color: #c8d8f3;
+        font-size: 0.76rem;
+        line-height: 1.4;
+      }
+
+      .think-steps b {
+        display: block;
+        color: #a8c5f5;
+        font-size: 0.65rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 0.16rem;
+      }
+
       .timeline {
         margin: 0.8rem 0 0;
         padding: 0;
@@ -398,8 +709,8 @@
       .timeline li {
         border: 1px solid var(--line);
         border-radius: 0.8rem;
-        background: rgba(255, 255, 255, 0.74);
-        color: #2d3f6d;
+        background: rgba(11, 22, 42, 0.76);
+        color: #bed2f0;
         padding: 0.58rem 0.68rem;
         font-size: 0.85rem;
         display: flex;
@@ -439,6 +750,8 @@
         height: 3rem;
         display: block;
         margin-top: 0.35rem;
+        border-radius: 0.5rem;
+        background: rgba(10, 20, 38, 0.74);
       }
 
       .chat {
@@ -446,7 +759,7 @@
         border: 1px solid var(--line);
         border-radius: 0.9rem;
         padding: 0.78rem;
-        background: rgba(255, 255, 255, 0.72);
+        background: rgba(10, 20, 38, 0.76);
       }
 
       .bubble {
@@ -458,19 +771,26 @@
 
       .bubble.ask {
         margin-left: auto;
-        background: #e8efff;
+        background: #1a2f5c;
+        color: #dbe7ff;
       }
 
       .bubble.answer {
         margin-top: 0.45rem;
-        background: #e3fbff;
-        color: #244a69;
+        background: #173f4a;
+        color: #d3f4ff;
+      }
+
+      .bubble.answer.alt {
+        margin-top: 0.5rem;
+        background: #222f5d;
+        color: #dde6ff;
       }
 
       .cta {
         margin-top: 1rem;
         padding: 1.3rem;
-        background: linear-gradient(118deg, rgba(111, 146, 255, 0.17), rgba(20, 192, 210, 0.16));
+        background: linear-gradient(118deg, rgba(31, 122, 240, 0.24), rgba(20, 192, 210, 0.2));
       }
 
       .cta p {
@@ -520,7 +840,7 @@
         width: min(460px, 100%);
         border: 1px solid var(--line);
         border-radius: 1rem;
-        background: #fff;
+        background: #0e1a33;
         box-shadow: var(--shadow);
         padding: 1rem;
       }
@@ -552,10 +872,12 @@
       .field input {
         margin-top: 0.28rem;
         width: 100%;
-        border: 1px solid var(--line);
+        border: 1px solid rgba(115, 156, 225, 0.35);
         border-radius: 0.72rem;
         padding: 0.66rem 0.72rem;
         font: inherit;
+        color: #e5efff;
+        background: rgba(10, 20, 38, 0.82);
       }
 
       .status {
@@ -563,6 +885,26 @@
         min-height: 1.2rem;
         font-size: 0.85rem;
         color: #118f56;
+      }
+
+      .how-grid.flow {
+        position: relative;
+      }
+
+      .how-grid.flow::before {
+        content: '';
+        position: absolute;
+        left: 4.6%;
+        right: 4.6%;
+        top: 1.62rem;
+        height: 2px;
+        background: linear-gradient(90deg, rgba(63, 110, 255, 0.22), rgba(22, 198, 211, 0.42), rgba(127, 108, 255, 0.22));
+        z-index: 0;
+      }
+
+      .how-grid.flow .how-step {
+        position: relative;
+        z-index: 1;
       }
 
       @media (max-width: 1040px) {
@@ -576,6 +918,14 @@
         }
 
         .how-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .how-grid.flow::before {
+          display: none;
+        }
+
+        .intel-meta {
           grid-template-columns: 1fr 1fr;
         }
       }
@@ -596,7 +946,9 @@
 
         .feature-grid,
         .how-grid,
-        .metrics {
+        .metrics,
+        .intel-meta,
+        .think-steps {
           grid-template-columns: 1fr;
         }
       }
@@ -643,8 +995,29 @@
           </article>
 
           <aside class="panel hero-map-wrap">
-            <canvas id="hero-map" aria-label="Interactive Kubernetes cluster map"></canvas>
-            <div id="cluster-tooltip" class="cluster-tooltip"></div>
+            <div class="hero-console">
+              <div class="console-top">
+                <strong>AI-Powered Kubernetes Operator</strong>
+                <span class="console-ping">Live</span>
+              </div>
+              <div class="console-intro">
+                <p>
+                  KubeSolv observes, reasons, and acts across your cluster in real-time, turning incidents into
+                  automated resolution and plain-English insights.
+                </p>
+              </div>
+              <div class="console-grid">
+                <article><span>Incidents Resolved Automatically</span><b>82%</b></article>
+                <article><span>Mean Time to Insight</span><b>42s</b></article>
+                <article><span>Active Cluster Signals</span><b>1,284</b></article>
+                <article><span>Human Escalations Avoided</span><b>67%</b></article>
+              </div>
+              <div class="console-stream">
+                <small>Real-time answers for pod, rollout, and dependency failures</small>
+                <small>Root-cause intelligence built from events, logs, and runtime metrics</small>
+                <small>Human-level SRE automation with safe auto-heal actions</small>
+              </div>
+            </div>
           </aside>
         </section>
 
@@ -664,7 +1037,7 @@
 
         <section class="section reveal" id="how">
           <h2>How It Works</h2>
-          <div class="how-grid">
+          <div class="how-grid flow">
             <article class="panel how-step"><b>1</b><p>Monitor your cluster continuously with workload and dependency awareness.</p></article>
             <article class="panel how-step"><b>2</b><p>Detect anomalies by combining event streams with resource and rollout telemetry.</p></article>
             <article class="panel how-step"><b>3</b><p>Auto-heal known failure patterns or suggest safe fixes for operator approval.</p></article>
@@ -676,10 +1049,36 @@
           <h2>Interactive Cluster Ops Demo</h2>
           <div class="demo-grid">
             <article class="panel demo-card">
-              <h3>Kubernetes Dependency Map</h3>
-              <p class="lead" style="font-size: 0.9rem; margin-top: 0.4rem;">Hover a node to inspect metrics and dependency impact in real-time.</p>
-              <canvas id="ops-map" aria-label="Pod dependency map"></canvas>
-              <canvas id="mini-map" aria-label="Pod health mini-map"></canvas>
+              <div class="hero-map-head" aria-hidden="true" style="position: static; margin-bottom: 0.55rem;">
+                <span class="hero-map-title">Live Cluster Intelligence</span>
+                <div class="hero-health">
+                  <span><i style="background: var(--ok)"></i>Healthy</span>
+                  <span><i style="background: var(--warn)"></i>Warning</span>
+                  <span><i style="background: var(--bad)"></i>Error</span>
+                </div>
+              </div>
+              <div class="intel-strip" aria-hidden="true">
+                <span>Namespace: production</span>
+                <span>Region: us-east-1</span>
+                <span>Refresh: 5s</span>
+              </div>
+              <p class="lead" style="font-size: 0.9rem; margin-top: 0.1rem;">Hover a node to inspect metrics and dependencies in real-time observability mode.</p>
+              <canvas id="live-intel-map" aria-label="Live cluster intelligence map"></canvas>
+              <div id="cluster-tooltip" class="cluster-tooltip"></div>
+              <article class="support-panel">
+                <h4>How KubeSolv Thinks</h4>
+                <ol class="think-steps">
+                  <li><b>Step 1</b>Detect anomaly</li>
+                  <li><b>Step 2</b>Correlate signals</li>
+                  <li><b>Step 3</b>Generate fix plan</li>
+                  <li><b>Step 4</b>Execute or escalate</li>
+                </ol>
+              </article>
+              <div class="intel-meta">
+                <article><span>Impacted Services</span><b>3</b></article>
+                <article><span>Drift Risk</span><b>Low</b></article>
+                <article><span>Confidence</span><b>94%</b></article>
+              </div>
               <div class="state-legend">
                 <span><i style="background: var(--ok)"></i>Healthy</span>
                 <span><i style="background: var(--warn)"></i>Warning</span>
@@ -705,6 +1104,8 @@
               <div class="chat">
                 <div class="bubble ask">Why is my pod failing?</div>
                 <div class="bubble answer">`payments-api-7bd8` shows high memory pressure and failing probes. Suggested action: increase memory request and add 5s readiness delay.</div>
+                <div class="bubble ask" style="margin-top:0.6rem;">Can KubeSolv auto-heal this safely?</div>
+                <div class="bubble answer alt">Yes. It can restart unhealthy pods, roll back the latest deployment revision, and post remediation context to Slack for operator approval.</div>
               </div>
             </article>
           </div>
@@ -853,11 +1254,11 @@
         const nodes = [
           { id: 'ingress', label: 'Ingress', role: 'Gateway', status: 'healthy', cpu: 34, mem: 52, restarts: 0, heroX: 0.14, heroY: 0.33, mapX: 0.13, mapY: 0.24, shape: 'hex' },
           { id: 'auth', label: 'Auth API', role: 'Pod', status: 'healthy', cpu: 49, mem: 61, restarts: 1, heroX: 0.36, heroY: 0.28, mapX: 0.33, mapY: 0.26, shape: 'circle' },
-          { id: 'billing', label: 'Billing', role: 'Pod', status: 'warning', cpu: 72, mem: 73, restarts: 2, heroX: 0.56, heroY: 0.45, mapX: 0.52, mapY: 0.44, shape: 'circle' },
+          { id: 'billing', label: 'Billing', role: 'Pod', status: 'warning', cpu: 72, mem: 73, restarts: 2, heroX: 0.64, heroY: 0.46, mapX: 0.52, mapY: 0.44, shape: 'circle' },
           { id: 'payments', label: 'Payments', role: 'Pod', status: 'error', cpu: 88, mem: 92, restarts: 5, heroX: 0.76, heroY: 0.3, mapX: 0.72, mapY: 0.32, shape: 'circle' },
           { id: 'worker', label: 'Worker', role: 'Pod', status: 'healthy', cpu: 43, mem: 55, restarts: 0, heroX: 0.79, heroY: 0.63, mapX: 0.81, mapY: 0.58, shape: 'circle' },
           { id: 'redis', label: 'Redis', role: 'Service', status: 'healthy', cpu: 31, mem: 47, restarts: 0, heroX: 0.58, heroY: 0.74, mapX: 0.57, mapY: 0.68, shape: 'hex' },
-          { id: 'metrics', label: 'Metrics', role: 'Service', status: 'warning', cpu: 66, mem: 68, restarts: 1, heroX: 0.32, heroY: 0.66, mapX: 0.34, mapY: 0.65, shape: 'hex' }
+          { id: 'metrics', label: 'Metrics', role: 'Service', status: 'warning', cpu: 66, mem: 68, restarts: 1, heroX: 0.24, heroY: 0.66, mapX: 0.34, mapY: 0.65, shape: 'hex' }
         ];
 
         const links = [
@@ -978,7 +1379,9 @@
           return { w, h };
         };
 
-        const drawHeroCluster = (canvas) => {
+        let heroFlow = [];
+
+        const drawLiveIntelCluster = (canvas) => {
           const fit = fitCanvas(canvas);
           const { ctx, w, h } = fit;
           const cx = w * 0.52;
@@ -1018,6 +1421,32 @@
             ctx.stroke();
           });
 
+          if (!heroFlow.length) {
+            for (let i = 0; i < 24; i += 1) {
+              heroFlow.push({
+                lane: i % lanes.length,
+                t: Math.random(),
+                speed: 0.002 + Math.random() * 0.0018
+              });
+            }
+          }
+
+          heroFlow.forEach((p) => {
+            const lane = lanes[p.lane];
+            const sx = lane[0] * w;
+            const sy = lane[1] * h;
+            const tx = lane[2];
+            const ty = lane[3];
+            p.t += p.speed;
+            if (p.t > 1) p.t = 0;
+            const x = sx + (tx - sx) * p.t;
+            const y = sy + (ty - sy) * p.t;
+            ctx.beginPath();
+            ctx.arc(x, y, 1.8, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(22, 198, 211, 0.72)';
+            ctx.fill();
+          });
+
           const pulse = Math.sin(Date.now() / 620) * 4;
           ctx.beginPath();
           ctx.arc(cx, cy, 42 + pulse, 0, Math.PI * 2);
@@ -1036,7 +1465,7 @@
           ctx.font = '700 12px Inter, sans-serif';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
-          ctx.fillText('AI SRE', cx, cy);
+          ctx.fillText('KubeSolv', cx, cy);
 
           nodes.forEach((n, i) => {
             const x = n.heroX * w;
@@ -1071,12 +1500,10 @@
           });
         };
 
-        const heroCanvas = document.getElementById('hero-map');
-        const opsCanvas = document.getElementById('ops-map');
-        const miniCanvas = document.getElementById('mini-map');
+        const liveIntelCanvas = document.getElementById('live-intel-map');
 
         const onHeroMove = (event) => {
-          const rect = heroCanvas.getBoundingClientRect();
+          const rect = liveIntelCanvas.getBoundingClientRect();
           const x = event.clientX - rect.left;
           const y = event.clientY - rect.top;
           const hit = hitNode(x, y, rect.width, rect.height, 'hero');
@@ -1090,11 +1517,16 @@
           tooltip.classList.add('show');
           tooltip.style.left = `${Math.min(rect.width - 190, Math.max(8, x + 12))}px`;
           tooltip.style.top = `${Math.max(10, y - 68)}px`;
-          tooltip.innerHTML = `<strong>${hit.label}</strong>CPU: ${hit.cpu}%<br />Memory: ${hit.mem}%<br />Restarts: ${hit.restarts}`;
+          const deps = links
+            .filter(([a, b]) => a === hit.id || b === hit.id)
+            .map(([a, b]) => (a === hit.id ? byId(b).label : byId(a).label))
+            .slice(0, 3)
+            .join(', ') || 'None';
+          tooltip.innerHTML = `<strong>${hit.label}</strong><div class=\"meta\">${hit.role}</div>CPU: ${hit.cpu}%<br />Memory: ${hit.mem}%<br />Restarts: ${hit.restarts}<br />Deps: ${deps}`;
         };
 
-        heroCanvas.addEventListener('mousemove', onHeroMove);
-        heroCanvas.addEventListener('mouseleave', () => {
+        liveIntelCanvas.addEventListener('mousemove', onHeroMove);
+        liveIntelCanvas.addEventListener('mouseleave', () => {
           hoveredId = null;
           tooltip.classList.remove('show');
         });
@@ -1143,12 +1575,22 @@
         const memSpark = document.getElementById('mem-spark');
         let cpuSeries = [52, 58, 62, 56, 68, 64, 71, 66, 69];
         let memSeries = [48, 50, 47, 55, 57, 62, 60, 64, 63];
+        let t = 0;
 
         const drawSpark = (canvas, arr, color) => {
           const ctx = canvas.getContext('2d');
           const w = canvas.width;
           const h = canvas.height;
           ctx.clearRect(0, 0, w, h);
+          for (let i = 0; i < 4; i += 1) {
+            const gy = (h / 4) * i + 6;
+            ctx.beginPath();
+            ctx.moveTo(4, gy);
+            ctx.lineTo(w - 4, gy);
+            ctx.strokeStyle = 'rgba(95, 128, 202, 0.14)';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
           ctx.beginPath();
           arr.forEach((v, i) => {
             const x = (i / (arr.length - 1)) * (w - 8) + 4;
@@ -1164,8 +1606,11 @@
         };
 
         const tickSpark = () => {
-          cpuSeries = cpuSeries.slice(1).concat(Math.max(30, Math.min(90, cpuSeries[cpuSeries.length - 1] + (Math.random() * 16 - 8))));
-          memSeries = memSeries.slice(1).concat(Math.max(28, Math.min(88, memSeries[memSeries.length - 1] + (Math.random() * 14 - 7))));
+          t += 1;
+          const cpuBase = 58 + Math.sin(t / 2.6) * 8 + Math.sin(t / 7.2) * 4;
+          const memBase = 54 + Math.sin(t / 3.4 + 0.8) * 7 + Math.sin(t / 8.8) * 3;
+          cpuSeries = cpuSeries.slice(1).concat(Math.max(32, Math.min(92, cpuBase + (Math.random() * 5 - 2.5))));
+          memSeries = memSeries.slice(1).concat(Math.max(30, Math.min(90, memBase + (Math.random() * 4 - 2))));
           drawSpark(cpuSpark, cpuSeries, '#3f6eff');
           drawSpark(memSpark, memSeries, '#16c6d3');
         };
@@ -1176,7 +1621,9 @@
         const bgCanvas = document.getElementById('bg-canvas');
         const bgCtx = bgCanvas.getContext('2d');
         const bgNodes = [];
-        const BG_COUNT = 44;
+        const bgHexes = [];
+        const bgFlows = [];
+        const BG_COUNT = 96;
 
         const resizeBg = () => {
           const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -1194,12 +1641,68 @@
               });
             }
           }
+
+          if (!bgHexes.length) {
+            for (let i = 0; i < 64; i += 1) {
+              bgHexes.push({
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                size: 8 + Math.random() * 8,
+                drift: (Math.random() - 0.5) * 0.08
+              });
+            }
+          }
+
+          if (!bgFlows.length) {
+            for (let i = 0; i < 28; i += 1) {
+              bgFlows.push({
+                y: (window.innerHeight / 28) * i + Math.random() * 24,
+                phase: Math.random() * Math.PI * 2,
+                speed: 0.004 + Math.random() * 0.003
+              });
+            }
+          }
+        };
+
+        const drawBgHex = (x, y, size, alpha) => {
+          bgCtx.beginPath();
+          for (let i = 0; i < 6; i += 1) {
+            const a = (Math.PI / 3) * i - Math.PI / 2;
+            const px = x + Math.cos(a) * size;
+            const py = y + Math.sin(a) * size;
+            if (i === 0) bgCtx.moveTo(px, py);
+            else bgCtx.lineTo(px, py);
+          }
+          bgCtx.closePath();
+          bgCtx.strokeStyle = `rgba(71, 120, 201, ${alpha})`;
+          bgCtx.lineWidth = 1;
+          bgCtx.stroke();
         };
 
         const tickBg = () => {
           const w = window.innerWidth;
           const h = window.innerHeight;
           bgCtx.clearRect(0, 0, w, h);
+
+          bgFlows.forEach((f, idx) => {
+            f.phase += f.speed;
+            bgCtx.beginPath();
+            for (let x = 0; x <= w; x += 24) {
+              const y = f.y + Math.sin((x / 130) + f.phase + idx * 0.26) * 8;
+              if (x === 0) bgCtx.moveTo(x, y);
+              else bgCtx.lineTo(x, y);
+            }
+            bgCtx.strokeStyle = 'rgba(40, 132, 186, 0.08)';
+            bgCtx.lineWidth = 1.1;
+            bgCtx.stroke();
+          });
+
+          bgHexes.forEach((hx) => {
+            hx.y += hx.drift;
+            if (hx.y < -20) hx.y = h + 20;
+            if (hx.y > h + 20) hx.y = -20;
+            drawBgHex(hx.x, hx.y, hx.size, 0.11);
+          });
 
           bgNodes.forEach((n) => {
             n.x += n.vx;
@@ -1210,7 +1713,7 @@
             if (n.y > h + 7) n.y = -7;
             bgCtx.beginPath();
             bgCtx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-            bgCtx.fillStyle = 'rgba(85, 126, 220, 0.16)';
+            bgCtx.fillStyle = 'rgba(39, 136, 185, 0.16)';
             bgCtx.fill();
           });
 
@@ -1224,7 +1727,7 @@
                 bgCtx.beginPath();
                 bgCtx.moveTo(a.x, a.y);
                 bgCtx.lineTo(b.x, b.y);
-                bgCtx.strokeStyle = `rgba(63,110,255,${alpha})`;
+                bgCtx.strokeStyle = `rgba(66,132,196,${alpha})`;
                 bgCtx.stroke();
               }
             }
@@ -1234,16 +1737,12 @@
         };
 
         const render = () => {
-          drawHeroCluster(heroCanvas);
-          drawOpsCluster(opsCanvas, 'map');
-          drawOpsCluster(miniCanvas, 'map');
+          drawLiveIntelCluster(liveIntelCanvas);
           requestAnimationFrame(render);
         };
 
         const resizeAll = () => {
-          fitCanvas(heroCanvas);
-          fitCanvas(opsCanvas);
-          fitCanvas(miniCanvas);
+          fitCanvas(liveIntelCanvas);
           resizeBg();
         };
 

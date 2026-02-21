@@ -319,14 +319,16 @@ h2 {
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 0.65rem;
 }
 
 .tech-cluster-map {
   position: relative;
-  height: 24rem;
-  max-width: 34rem;
-  margin: 0 auto;
+  height: 100%;
+  min-height: 24rem;
+  width: 100%;
+  max-width: none;
+  margin: 0;
   overflow: hidden;
   border-radius: 1rem;
   border: 1px solid rgba(130, 188, 255, 0.22);
@@ -335,6 +337,51 @@ h2 {
     radial-gradient(circle at 83% 82%, rgba(93, 227, 194, 0.16), rgba(93, 227, 194, 0) 40%),
     linear-gradient(160deg, rgba(8, 14, 30, 0.9), rgba(6, 11, 23, 0.92));
   box-shadow: inset 0 0 35px rgba(3, 8, 20, 0.55);
+}
+
+.tech-map-head {
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  top: 0.65rem;
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.45rem;
+  pointer-events: none;
+}
+
+.tech-map-title {
+  font-size: 0.66rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: #82ccff;
+  font-weight: 800;
+}
+
+.tech-map-health {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.tech-map-health span {
+  border: 1px solid rgba(130, 188, 255, 0.25);
+  border-radius: 999px;
+  background: rgba(11, 20, 40, 0.78);
+  color: #bdd0ec;
+  padding: 0.14rem 0.38rem;
+  font-size: 0.58rem;
+  font-weight: 700;
+}
+
+.tech-map-health i {
+  width: 0.45rem;
+  height: 0.45rem;
+  display: inline-block;
+  border-radius: 50%;
+  margin-right: 0.26rem;
 }
 
 .tech-cluster-map.tech-ready .tech-fallback-orbit {
@@ -348,31 +395,6 @@ h2 {
   height: 100%;
   display: block;
   z-index: 1;
-}
-
-.tech-core-badge {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  width: 6.65rem;
-  aspect-ratio: 1 / 0.92;
-  clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0 50%);
-  border: 1px solid rgba(93, 227, 194, 0.7);
-  background: linear-gradient(150deg, rgba(26, 132, 226, 0.94), rgba(23, 96, 188, 0.94));
-  color: #eaf7ff;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  font-size: 0.83rem;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  box-shadow:
-    0 16px 32px rgba(10, 30, 62, 0.45),
-    inset 0 0 16px rgba(255, 255, 255, 0.14);
-  pointer-events: none;
 }
 
 .tech-fallback-orbit {
@@ -772,11 +794,6 @@ h2 {
 
   .tech-cluster-map {
     height: 19rem;
-  }
-
-  .tech-core-badge {
-    width: 5.9rem;
-    font-size: 0.76rem;
   }
 
   .extra-cert-item {

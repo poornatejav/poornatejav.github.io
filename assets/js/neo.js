@@ -116,28 +116,58 @@
 
     const ctx = canvas.getContext('2d');
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const roleColors = {
+      Runtime: ['#3a86ff', '#63a8ff'],
+      Protocol: ['#4f9cff', '#7cc4ff'],
+      Schema: ['#4d8ef0', '#7fa2ff'],
+      Container: ['#3d7ad8', '#5fb4ff'],
+      IaC: ['#4f73d8', '#7c9aff'],
+      Cloud: ['#3e6be0', '#4cc6d6'],
+      Data: ['#2d88c9', '#57d0d2'],
+      'CI/CD': ['#5f7fd8', '#8dc0ff'],
+      Automation: ['#6072bf', '#8ba0e8'],
+      Scaler: ['#4873d1', '#56c0df'],
+      Packaging: ['#5f77cc', '#80a8ee'],
+      default: ['#4a79da', '#6da7f3']
+    };
     const techNodes = [
-      { label: 'Golang', detail: 'Microservices & concurrency', x: 0.17, y: 0.2, vx: 15, vy: -12, r: 22, hue: 206 },
-      { label: 'gRPC', detail: 'Service-to-service APIs', x: 0.36, y: 0.14, vx: -11, vy: 17, r: 19, hue: 198 },
-      { label: 'Protocol Buffers', detail: 'Contract-first schemas', x: 0.58, y: 0.13, vx: 13, vy: 14, r: 23, hue: 212 },
-      { label: 'Docker', detail: 'Containerized delivery', x: 0.81, y: 0.22, vx: -13, vy: 10, r: 20, hue: 192 },
-      { label: 'Terraform', detail: 'Infrastructure automation', x: 0.84, y: 0.46, vx: 14, vy: -15, r: 22, hue: 222 },
-      { label: 'AWS', detail: 'Cloud-native runtime', x: 0.73, y: 0.7, vx: -16, vy: -8, r: 18, hue: 189 },
-      { label: 'GCP', detail: 'Multi-cloud capability', x: 0.54, y: 0.83, vx: 12, vy: -14, r: 18, hue: 201 },
-      { label: 'Redis', detail: 'Low-latency data layer', x: 0.34, y: 0.84, vx: -10, vy: -16, r: 19, hue: 214 },
-      { label: 'Jenkins', detail: 'CI/CD orchestration', x: 0.15, y: 0.68, vx: 12, vy: 15, r: 20, hue: 200 },
-      { label: 'Python', detail: 'Automation & tooling', x: 0.12, y: 0.44, vx: -13, vy: 12, r: 18, hue: 208 }
+      { id: 'go', label: 'Golang', role: 'Runtime', detail: 'Microservices & concurrency', x: 0.16, y: 0.28, r: 15, shape: 'circle' },
+      { id: 'grpc', label: 'gRPC', role: 'Protocol', detail: 'Service-to-service APIs', x: 0.31, y: 0.18, r: 14, shape: 'circle' },
+      { id: 'proto', label: 'Protobuf', role: 'Schema', detail: 'Contract-first definitions', x: 0.51, y: 0.16, r: 15, shape: 'circle' },
+      { id: 'docker', label: 'Docker', role: 'Container', detail: 'Build and ship images', x: 0.74, y: 0.24, r: 14, shape: 'circle' },
+      { id: 'tf', label: 'Terraform', role: 'IaC', detail: 'Provisioning automation', x: 0.84, y: 0.46, r: 15, shape: 'circle' },
+      { id: 'aws', label: 'AWS', role: 'Cloud', detail: 'Scalable cloud runtime', x: 0.72, y: 0.68, r: 14, shape: 'circle' },
+      { id: 'gcp', label: 'GCP', role: 'Cloud', detail: 'Multi-cloud readiness', x: 0.53, y: 0.81, r: 14, shape: 'circle' },
+      { id: 'redis', label: 'Redis', role: 'Data', detail: 'Low-latency caching', x: 0.33, y: 0.82, r: 14, shape: 'circle' },
+      { id: 'jenkins', label: 'Jenkins', role: 'CI/CD', detail: 'Pipeline orchestration', x: 0.17, y: 0.68, r: 14, shape: 'circle' },
+      { id: 'python', label: 'Python', role: 'Automation', detail: 'Ops tooling and scripts', x: 0.12, y: 0.46, r: 15, shape: 'circle' },
+      { id: 'karp', label: 'Karpenter', role: 'Scaler', detail: 'Dynamic cluster autoscaling', x: 0.62, y: 0.57, r: 16, shape: 'circle' },
+      { id: 'helm', label: 'Helm', role: 'Packaging', detail: 'Kubernetes release management', x: 0.43, y: 0.38, r: 14, shape: 'circle' }
     ];
     const links = [
-      [0, 1], [1, 2], [2, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 0], [1, 5], [2, 7]
+      ['go', 'grpc'],
+      ['grpc', 'proto'],
+      ['proto', 'docker'],
+      ['docker', 'tf'],
+      ['tf', 'aws'],
+      ['aws', 'gcp'],
+      ['gcp', 'redis'],
+      ['redis', 'jenkins'],
+      ['jenkins', 'python'],
+      ['python', 'go'],
+      ['grpc', 'aws'],
+      ['proto', 'redis'],
+      ['karp', 'aws'],
+      ['helm', 'proto'],
+      ['helm', 'docker']
     ];
 
     let width = 0;
     let height = 0;
-    let lastTs = 0;
     let hoverNode = null;
     let initialized = false;
-    const core = { x: 0, y: 0, r: 60 };
+    let flow = [];
+    const core = { x: 0, y: 0 };
 
     const resize = () => {
       width = wrap.clientWidth;
@@ -147,10 +177,22 @@
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       core.x = width / 2;
       core.y = height / 2;
-      techNodes.forEach((n) => {
+      techNodes.forEach((n, idx) => {
         n.px = n.x * width;
         n.py = n.y * height;
+        n.baseX = n.px;
+        n.baseY = n.py;
+        n.r = Math.max(20, Math.min(46, n.label.length * 1.58 + 13));
+        n.floatA = 4 + (idx % 4) * 1.45;
+        n.floatB = 3.4 + ((idx + 2) % 5) * 1.1;
+        n.floatSpeed = 0.0025 + (idx % 5) * 0.00045;
+        n.phase = (idx / techNodes.length) * Math.PI * 2;
       });
+      if (!flow.length) {
+        for (let i = 0; i < 20; i += 1) {
+          flow.push({ lane: i % links.length, t: Math.random(), speed: 0.0032 + Math.random() * 0.0019 });
+        }
+      }
     };
 
     const hideTooltip = () => {
@@ -160,7 +202,15 @@
     };
 
     const placeTooltip = (node) => {
-      tooltip.innerHTML = `<strong>${node.label}</strong>${node.detail}`;
+      const deps = links
+        .filter(([a, b]) => a === node.id || b === node.id)
+        .map(([a, b]) => {
+          const id = a === node.id ? b : a;
+          return techNodes.find((n) => n.id === id)?.label || id;
+        })
+        .slice(0, 3)
+        .join(', ');
+      tooltip.innerHTML = `<strong>${node.label}</strong>${node.role}<br />${node.detail}<br />Deps: ${deps || 'None'}`;
       const x = node.px;
       const y = node.py;
       tooltip.style.left = `${Math.max(8, Math.min(width - 210, x + 12))}px`;
@@ -182,7 +232,7 @@
       const mx = event.clientX - rect.left;
       const my = event.clientY - rect.top;
       const found = hitNode(mx, my);
-      hoverNode = found;
+      if (hoverNode !== found) hoverNode = found;
       if (found) placeTooltip(found);
       else hideTooltip();
     });
@@ -195,98 +245,109 @@
         for (let x = 14; x < width; x += 24) {
           ctx.beginPath();
           ctx.arc(x + offset, y, 1.15, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(122, 174, 255, 0.14)';
+          ctx.fillStyle = 'rgba(116, 155, 227, 0.13)';
           ctx.fill();
         }
+      }
+
+      for (let i = 0; i < 3; i += 1) {
+        const r = 50 + i * 28;
+        ctx.beginPath();
+        ctx.arc(core.x, core.y, r, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(95, 126, 194, ${0.18 - i * 0.04})`;
+        ctx.lineWidth = 1.1;
+        ctx.stroke();
       }
     };
 
     const drawLinks = () => {
-      links.forEach(([aIdx, bIdx]) => {
-        const a = techNodes[aIdx];
-        const b = techNodes[bIdx];
+      links.forEach(([aId, bId]) => {
+        const a = techNodes.find((n) => n.id === aId);
+        const b = techNodes.find((n) => n.id === bId);
+        if (!a || !b) return;
         const d = Math.hypot(a.px - b.px, a.py - b.py);
         const baseAlpha = Math.max(0.08, 1 - d / 220) * 0.3;
         const isHot = hoverNode && (hoverNode === a || hoverNode === b);
         ctx.beginPath();
         ctx.moveTo(a.px, a.py);
         ctx.lineTo(b.px, b.py);
-        ctx.strokeStyle = isHot ? 'rgba(122, 206, 255, 0.72)' : `rgba(122, 206, 255, ${baseAlpha})`;
-        ctx.lineWidth = isHot ? 1.8 : 1.05;
+        ctx.strokeStyle = isHot ? 'rgba(140, 206, 255, 0.58)' : `rgba(116, 176, 232, ${baseAlpha * 0.85})`;
+        ctx.lineWidth = isHot ? 1.5 : 0.95;
         ctx.stroke();
+      });
+
+      flow.forEach((p) => {
+        const [aId, bId] = links[p.lane];
+        const a = techNodes.find((n) => n.id === aId);
+        const b = techNodes.find((n) => n.id === bId);
+        if (!a || !b) return;
+        p.t += p.speed * 0.45;
+        if (p.t > 1) p.t = 0;
+        const x = a.px + (b.px - a.px) * p.t;
+        const y = a.py + (b.py - a.py) * p.t;
+        ctx.beginPath();
+        ctx.arc(x, y, 1.5, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(135, 196, 246, 0.64)';
+        ctx.fill();
       });
     };
 
+    const fitNodeLabel = (text, maxWidth, maxFont, minFont) => {
+      let font = maxFont;
+      while (font > minFont) {
+        ctx.font = `600 ${font}px Outfit, sans-serif`;
+        if (ctx.measureText(text).width <= maxWidth) return { text, font };
+        font -= 0.35;
+      }
+      ctx.font = `600 ${minFont}px Outfit, sans-serif`;
+      if (ctx.measureText(text).width <= maxWidth) return { text, font: minFont };
+      let clipped = text;
+      while (clipped.length > 3 && ctx.measureText(`${clipped}...`).width > maxWidth) {
+        clipped = clipped.slice(0, -1);
+      }
+      return { text: `${clipped}...`, font: minFont };
+    };
+
     const drawNode = (n, idx) => {
-      const pulse = Math.sin((Date.now() / 540) + idx) * 1.2;
+      const pulse = Math.sin((Date.now() / 1100) + idx * 0.63) * 0.8;
       const r = n.r + pulse;
       const active = hoverNode === n;
-      const grad = ctx.createRadialGradient(n.px - r * 0.35, n.py - r * 0.35, r * 0.16, n.px, n.py, r);
-      grad.addColorStop(0, `hsla(${n.hue}, 94%, 76%, 0.95)`);
-      grad.addColorStop(1, `hsla(${n.hue}, 72%, 45%, 0.93)`);
+      const [c1, c2] = roleColors[n.role] || roleColors.default;
 
       ctx.beginPath();
-      ctx.arc(n.px, n.py, r + (active ? 4 : 1.4), 0, Math.PI * 2);
-      ctx.fillStyle = active ? 'rgba(122, 206, 255, 0.22)' : 'rgba(122, 206, 255, 0.1)';
+      ctx.arc(n.px, n.py, r + (active ? 3.5 : 1.6), 0, Math.PI * 2);
+      ctx.fillStyle = active ? 'rgba(145, 197, 245, 0.2)' : 'rgba(117, 157, 214, 0.12)';
       ctx.fill();
 
+      const g = ctx.createRadialGradient(n.px - r * 0.3, n.py - r * 0.35, r * 0.3, n.px, n.py, r * 1.1);
+      g.addColorStop(0, c2);
+      g.addColorStop(1, c1);
       ctx.beginPath();
       ctx.arc(n.px, n.py, r, 0, Math.PI * 2);
-      ctx.fillStyle = grad;
+      ctx.fillStyle = g;
       ctx.fill();
-      ctx.strokeStyle = 'rgba(219, 241, 255, 0.45)';
-      ctx.lineWidth = 1;
+      ctx.strokeStyle = active ? 'rgba(236, 247, 255, 0.74)' : 'rgba(214, 233, 255, 0.45)';
+      ctx.lineWidth = active ? 1.2 : 0.9;
       ctx.stroke();
 
       ctx.fillStyle = '#edf8ff';
-      ctx.font = `${active ? 11 : 10}px Outfit, sans-serif`;
+      const fzMax = Math.max(9.2, Math.min(12.2, r * 0.41));
+      const { text: label, font } = fitNodeLabel(n.label, r * 1.62, fzMax, 8.8);
+      ctx.font = `600 ${active ? font + 0.25 : font}px Outfit, sans-serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(n.label, n.px, n.py);
+      ctx.fillText(label, n.px, n.py);
     };
 
-    const tick = (ts) => {
-      const dt = Math.min((ts - (lastTs || ts)) / 1000, 0.03);
-      lastTs = ts;
+    const tick = () => {
       drawBackdrop();
-
+      const t = performance.now();
       techNodes.forEach((n) => {
-        n.px += n.vx * dt;
-        n.py += n.vy * dt;
-        n.vx *= 0.9986;
-        n.vy *= 0.9986;
-
-        const dx = n.px - core.x;
-        const dy = n.py - core.y;
-        const d = Math.hypot(dx, dy) || 0.001;
-        const minCore = n.r + core.r + 6;
-        if (d < minCore) {
-          const nx = dx / d;
-          const ny = dy / d;
-          n.px = core.x + nx * minCore;
-          n.py = core.y + ny * minCore;
-          const dot = n.vx * nx + n.vy * ny;
-          if (dot < 0) {
-            n.vx -= 1.8 * dot * nx;
-            n.vy -= 1.8 * dot * ny;
-          }
-        }
-
-        if (n.px - n.r < 8) {
-          n.px = n.r + 8;
-          n.vx = Math.abs(n.vx);
-        } else if (n.px + n.r > width - 8) {
-          n.px = width - n.r - 8;
-          n.vx = -Math.abs(n.vx);
-        }
-
-        if (n.py - n.r < 8) {
-          n.py = n.r + 8;
-          n.vy = Math.abs(n.vy);
-        } else if (n.py + n.r > height - 8) {
-          n.py = height - n.r - 8;
-          n.vy = -Math.abs(n.vy);
-        }
+        n.phase += n.floatSpeed;
+        const driftX = Math.cos(n.phase + t * 0.000085) * n.floatA;
+        const driftY = Math.sin(n.phase * 0.92 + t * 0.00007) * n.floatB;
+        n.px = n.baseX + driftX;
+        n.py = n.baseY + driftY;
       });
 
       drawLinks();
