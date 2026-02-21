@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="HackerRank">
+  <path d="M32 2 58 17v30L32 62 6 47V17z" fill="#10B35C"/>
+  <path d="M24 16h6v13h4V16h6v32h-6V35h-4v13h-6z" fill="#fff"/>
+  <path d="M20 23h6L18 32l8 9h-6l-8-9zM44 23h-6l8 9-8 9h6l8-9z" fill="#fff"/>
+</svg>

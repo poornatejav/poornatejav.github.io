@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="220" viewBox="0 0 320 220" role="img" aria-labelledby="title desc">
+  <title id="title">Go Basic Verified Badge</title>
+  <desc id="desc">Go Basic Verified skill badge</desc>
+  <rect width="320" height="220" rx="10" fill="#16A34A"/>
+  <circle cx="34" cy="36" r="14" fill="#E8FFF1"/>
+  <path d="M28 52 L25 68 L34 63 L43 68 L40 52" fill="#E8FFF1"/>
+  <text x="28" y="120" fill="#E8FFF1" font-family="Outfit, Arial, sans-serif" font-size="38" font-weight="500">Go (Basic)</text>
+  <text x="28" y="178" fill="#FFFFFF" font-family="Outfit, Arial, sans-serif" font-size="50" font-weight="800">Verified</text>
+  <path d="M214 154 h106 l-22 22 l22 22 h-106 l18-22 z" fill="#8BE38F"/>
+  <text x="252" y="184" fill="#117A2D" font-family="Outfit, Arial, sans-serif" font-size="28" font-weight="700">SKILL</text>
+</svg>

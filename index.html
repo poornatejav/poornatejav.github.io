@@ -1,262 +1,220 @@
-<!DOCTYPE HTML>
-<!--
-    Prologue by HTML5 UP
-    html5up.net | @ajlkn
-    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-    <head>
-        <title>Poorna Teja Vengala</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link rel="stylesheet" href="assets/css/main.css" />
-        <style>
-            #header {
-                background-color: #328716c9; /* Light Gray Background Color */
-            }
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>Poorna Teja Vengala | Software Engineer</title>
+    <meta
+      name="description"
+      content="Portfolio of Poorna Teja Vengala, Golang Software Engineer focused on scalable backend systems, cloud infrastructure, and DevOps."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="assets/css/neo.css" />
+  </head>
+  <body>
+    <div class="bg-scene" aria-hidden="true">
+      <canvas id="bg-particles"></canvas>
+    </div>
 
-            #top {
-			position: relative;
-			background: url('images/banner.jpg') no-repeat center center fixed;
-			background-size: cover;
-			}
+    <header class="site-header">
+      <a href="#top" class="brand">
+        <span class="avatar-wrap"><img src="images/avatar.jpg" alt="Poorna Teja Vengala" /></span>
+        <h1>Poorna Teja Vengala</h1>
+      </a>
 
-            .slideshow-container {
-                max-width: 1000px;
-                position: relative;
-                margin: auto;
-            }
+      <nav class="site-nav" aria-label="Primary Navigation">
+        <a href="#top" class="nav-link active">Intro</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#certificates" class="nav-link">Credential Capsules</a>
+        <a href="kubesolv.html" class="nav-link nav-cta">KubeSolv</a>
+      </nav>
 
-            .mySlides {
-                display: none;
-            }
+      <div class="contact-links" aria-label="Contact links">
+        <a href="https://www.linkedin.com/in/tejavengala/" target="_blank" rel="noreferrer" class="contact-pill" aria-label="LinkedIn">
+          <img src="images/linkedin-logo.svg" alt="LinkedIn" class="contact-logo raw-logo brand-fill" />
+        </a>
+        <a href="https://www.hackerrank.com/profile/poornateja340" target="_blank" rel="noreferrer" class="contact-pill" aria-label="HackerRank">
+          <img src="images/hackerrank-logo.svg" alt="HackerRank" class="contact-logo raw-logo brand-fill" />
+        </a>
+        <a href="https://github.com/poornatejav" target="_blank" rel="noreferrer" class="contact-pill" aria-label="GitHub">
+          <img src="images/github-logo.svg" alt="GitHub" class="contact-logo raw-logo brand-fill" />
+        </a>
+        <a href="mailto:tejapvengala@gmail.com" class="contact-pill" aria-label="Email">
+          <img src="images/email-logo.svg" alt="Email" class="contact-logo raw-logo brand-fill" />
+        </a>
+      </div>
+    </header>
 
-            /* Next & previous buttons */
-            .prev, .next {
-                cursor: pointer;
-                position: absolute;
-                top: 50%;
-                width: auto;
-                margin-top: -22px;
-                padding: 16px;
-                color: white;
-                font-weight: bold;
-                font-size: 18px;
-                transition: 0.6s ease;
-                border-radius: 0 3px 3px 0;
-            }
-
-            /* Position the "next button" to the right */
-            .next {
-                right: 0;
-                border-radius: 3px 0 0 3px;
-            }
-
-            /* On hover, add a black background color with a little bit see-through */
-            .prev:hover, .next:hover {
-                background-color: rgba(0, 0, 0, 0.8);
-            }
-
-            /* The dots/bullets/indicators */
-            .dot {
-                cursor: pointer;
-                height: 15px;
-                width: 15px;
-                margin: 0 2px;
-                background-color: #bbb;
-                border-radius: 50%;
-                display: inline-block;
-                transition: background-color 0.6s ease;
-            }
-
-            .active, .dot:hover {
-                background-color: #717171;
-            }
-        </style>
-    </head>
-    <body class="is-preload">
-
-        <!-- Header -->
-        <div id="header">
-            <div class="top">
-                <!-- Logo -->
-                <div id="logo">
-                    <h1 id="title">Poorna Teja Vengala</h1>
-                    <p>Software Engineer</p>
-                </div>
-                <!-- Nav -->
-                <nav id="nav">
-                    <ul>
-                        <li><a href="#top" id="top-link"><span class="icon solid fa-home">Intro</span></a></li>
-                        <li><a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th">Portfolio</span></a></li>
-                        <li><a href="#about" id="about-link"><span class="icon solid fa-user">About Me</span></a></li>
-                    </ul>
-                </nav>
+    <main>
+      <section class="hero section" id="top">
+        <div class="hero-grid">
+          <div class="hero-copy panel">
+            <p class="eyebrow">Golang • Cloud Native • Kubernetes</p>
+            <h2>Engineering cloud-native backend systems that scale cleanly.</h2>
+            <p class="lead">
+              Software Engineer with 4+ years of experience building high-performance microservices in Golang,
+              optimizing AWS environments, and automating delivery with CI/CD, observability, and platform best practices.
+            </p>
+            <div class="hero-actions">
+              <a href="#certificates" class="btn">Explore Badges</a>
+              <a href="#extra-certs" class="btn btn-secondary">View Certificates</a>
             </div>
-            <div class="bottom">
-                <!-- Social Icons -->
-                <ul class="icons">
-                    <li><a href="https://www.linkedin.com/in/tejavengala/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
-                    <li><a href="https://www.hackerrank.com/profile/poornateja340" class="icon brands fa-hackerrank"><span class="label">Hackerrank</span></a></li>
-                    <li><a href="https://github.com/poornatejav" class="icon brands fa-github"><span class="label">Github</span></a></li>
-                    <li><a href="mailto:tejapvengala@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-                </ul>
+          </div>
+
+          <aside class="hero-side panel">
+            <h3>Cloud-Native Focus</h3>
+            <div class="hero-metrics">
+              <article>
+                <strong>4+</strong>
+                <span>Years in backend and cloud engineering</span>
+              </article>
+              <article>
+                <strong>40%</strong>
+                <span>API latency reduction with Go microservices</span>
+              </article>
+              <article>
+                <strong>gRPC</strong>
+                <span>30% inter-service latency/bandwidth improvement</span>
+              </article>
+              <article>
+                <strong>K8s + IaC</strong>
+                <span>Kubernetes, Karpenter, Terraform automation</span>
+              </article>
+              <article>
+                <strong>70%</strong>
+                <span>Daily engineering time spent on coding and technical design</span>
+              </article>
+              <article>
+                <strong>99.9%</strong>
+                <span>Reliability mindset shaped by incident response and postmortems</span>
+              </article>
             </div>
+          </aside>
         </div>
+      </section>
 
-        <!-- Main -->
-        <div id="main">
-            <!-- Intro -->
-            <section id="top" class="one dark cover">
-                <div class="container">
-                    <header>
-                        <h2 class="alt">Hi! I'm <strong>Poorna Teja</strong>, </h2>
-                        <p>Software Engineer with 4+ years of experience designing, developing, and optimizing high-performance, scalable microservices using Golang.
-                            Proficient in cloud-native architectures, API development, and DevOps. Passionate about building efficient, reliable, and secure backend systems.</p>
-                    </header>
-                    <footer>
-                        <a href="#about" class="button scrolly">About Me</a>
-                    </footer>
+      <section class="about section" id="about">
+        <div class="panel">
+          <p class="eyebrow">About</p>
+          <h2>About Me</h2>
+          <div class="about-grid">
+            <article>
+              <p>
+                I architect and ship backend platforms that stay fast under pressure, with a strong focus on Golang microservices, API reliability,
+                and clean cloud-native operations.
+              </p>
+              <p>
+                My daily work spans distributed service design, gRPC and REST integrations, Kubernetes runtime behavior, and infrastructure automation.
+                I prioritize measurable outcomes: lower latency, tighter release cycles, and resilient service behavior during real production load.
+              </p>
+              <p>
+                I bring a systems-first engineering mindset: design for scale early, instrument everything, reduce manual operations,
+                and keep delivery quality high through repeatable CI/CD and incident-learned improvements.
+              </p>
+            </article>
+            <article class="tech-modern">
+              <h3>Core Components</h3>
+              <div class="tech-cluster-map">
+                <canvas id="tech-cluster-canvas" aria-label="Core technology cluster map"></canvas>
+                <div class="tech-core-badge">Kubernetes</div>
+                <div id="tech-tooltip" class="tech-tooltip" aria-hidden="true"></div>
+                <div class="tech-fallback-orbit" aria-hidden="true">
+                  <span style="--x: 14%; --y: 18%;">Golang</span>
+                  <span style="--x: 33%; --y: 12%;">gRPC</span>
+                  <span style="--x: 56%; --y: 10%;">Protobuf</span>
+                  <span style="--x: 78%; --y: 18%;">Docker</span>
+                  <span style="--x: 84%; --y: 40%;">Terraform</span>
+                  <span style="--x: 76%; --y: 66%;">AWS</span>
+                  <span style="--x: 57%; --y: 80%;">GCP</span>
+                  <span style="--x: 34%; --y: 84%;">Redis</span>
+                  <span style="--x: 16%; --y: 68%;">Jenkins</span>
+                  <span style="--x: 12%; --y: 44%;">Python</span>
                 </div>
-            </section>
-
-            <!-- Portfolio -->
-            <section id="portfolio" class="two">
-                <div class="container">
-                    <header>
-                        <h2>Portfolio</h2>
-                    </header>
-                    <p>Golang Software Engineer and AWS Certified Solutions Architect Associate proficient in building and deploying scalable microservices on AWS. Expertise in API development, containerization (Docker, Kubernetes, Karpenter), infrastructure as code (Terraform), automation (Python/Boto3, Shell, Bash), databases (MongoDB), and monitoring (Prometheus, Grafana).</p>
-
-                    <div class="row">
-                        <div class="col-4 col-12-mobile">
-                            <article class="item zigzag-item">
-                                <a href="https://www.hackerrank.com/certificates/iframe/0263f6d1a4ef" target="_blank" class="image fit"><img src="images/golang.png" alt="" /></a>
-                                <header>
-                                    <h3>Golang Basics Certified</h3>
-                                </header>
-                            </article>
-                            <article class="item">
-                                <a href="https://badgr.com/public/assertions/E0dIOPm5STyMODDQcld6iA?identity__email=poornateja340@gmail.com" target="_blank" class="image fit"><img src="images/Postman - Postman API Fundamentals Student Expert - 2024-03-08.png" alt="" /></a>
-                                <header>
-                                    <h3>Postman API Expert</h3>
-                                </header>
-                            </article>
-                        </div>
-                        <div class="col-4 col-12-mobile">
-                            <article class="item zigzag-item">
-                                <a href="https://www.credly.com/badges/5cc0f7e2-10d0-4123-bce8-ade4885278c2/public_url" target="_blank" class="image fit"><img src="images/AWS-SA.png" alt="" /></a>
-                                <header>
-                                    <h3>AWS Certified Solution Architect</h3>
-                                </header>
-                            </article>
-                            <article class="item">
-                                <a href="https://www.credly.com/badges/b37012b9-1ead-40f3-9335-4eefe17294b0/public_url" target="_blank" class="image fit"><img src="images/Docker.png" alt="" /></a>
-                                <header>
-                                    <h3>Docker Essentials</h3>
-                                </header>
-                            </article>
-                        </div>
-                        <div class="col-4 col-12-mobile">
-                            <article class="item zigzag-item">
-                                <a href="https://www.credly.com/badges/9c77c72e-d87c-419b-800b-550ae27be226/public_url" target="_blank" class="image fit"><img src="images/aws net.png" alt="" /></a>
-                                <header>
-                                    <h3>Networking Core Knowledge</h3>
-                                </header>
-                            </article>
-                            <article class="item">
-                                <a href="https://www.credly.com/badges/ffb6ceaa-3ee1-4eab-9835-35e2f4e2d9c7/public_url" target="_blank" class="image fit"><img src="images/K8.png" alt="" /></a>
-                                <header>
-                                    <h3>Kubernetes Fundamentals</h3>
-                                </header>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- About Me -->
-            <section id="about" class="three">
-                <div class="container">
-                    <header>
-                        <h2>About Me</h2>
-                    </header>
-                    <p>Hi, I'm PoornaTeja Vengala, a passionate Software Engineer with hands-on experience in developing high-performance, scalable backend systems, specializing in Golang. With a strong background in cloud infrastructure, automation, and CI/CD pipelines, I focus on creating efficient and robust solutions. My expertise includes developing microservices, optimizing AWS environments, and leveraging Python for automation tasks. I hold a Master's degree in Computer Science from the University of Illinois and am an AWS Certified Solutions Architect Associate. I'm eager to apply my skills in Golang, cloud technologies, and infrastructure automation to drive innovation and efficiency in software development.</p>
-                    <!-- Slideshow Container -->
-                    <div class="slideshow-container">
-                        <div class="mySlides fade">
-                            <img src="images/gitlab.png" style="width:100%" alt="PoornaTeja Vengala" />
-                        </div>
-                        <div class="mySlides fade">
-                            <img src="images/docker1.png" style="width:100%" alt="Image 2" />
-                        </div>
-                        <div class="mySlides fade">
-                            <img src="images/python.png" style="width:100%" alt="Image 2" />
-                        </div>
-                        <div class="mySlides fade">
-                            <img src="images/scrum.png" style="width:100%" alt="Image 3" />
-                        </div>
-                        <!-- Next and Previous Button -->
-                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                    </div>
-                    <br />
-                    <!-- The dots/circles -->
-                    <div style="text-align:center">
-                        <span class="dot" onclick="currentSlide(1)"></span>
-                        <span class="dot" onclick="currentSlide(2)"></span>
-                        <span class="dot" onclick="currentSlide(3)"></span>
-                    </div>
-                </div>
-            </section>
+              </div>
+            </article>
+          </div>
         </div>
+      </section>
 
-        <!-- Footer -->
-        <div id="footer">
-            <!-- Copyright -->
-            <ul class="copyright">
-                <li>&copy; Poorna Teja Vengala. All rights reserved.</li>
-                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-            </ul>
+      <section class="certificates section" id="certificates">
+        <div class="panel">
+          <p class="eyebrow">End Section</p>
+          <h2>Credential Capsules</h2>
+          <p class="lead">Slide through capsules and click any image to open it with logo + details.</p>
+
+          <div class="slider-wrap">
+            <div class="slider-track">
+              <button class="gallery-item" data-img="images/AWS-SA.png" data-title="AWS Solutions Architect" data-logo="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/amazonaws.svg" data-detail="Validates architecture design, security, high availability, and cost optimization on AWS."><img src="images/AWS-SA.png" alt="AWS Solutions Architect" /></button>
+              <button class="gallery-item" data-img="images/Docker.png" data-title="Docker Essentials" data-logo="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/docker.svg" data-detail="Covers container fundamentals, image lifecycle, and efficient packaging of backend applications."><img src="images/Docker.png" alt="Docker Essentials" /></button>
+              <button class="gallery-item" data-img="images/K8.png" data-title="Kubernetes Fundamentals" data-logo="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/kubernetes.svg" data-detail="Demonstrates hands-on understanding of workloads, scaling, networking, and Kubernetes operations."><img src="images/K8.png" alt="Kubernetes Fundamentals" /></button>
+              <button class="gallery-item" data-img="images/aws net.png" data-title="AWS Networking Core" data-logo="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/amazonaws.svg" data-detail="Focuses on VPC design, routing controls, secure connectivity, and cloud network architecture."><img src="images/aws net.png" alt="AWS Networking Core" /></button>
+              <button class="gallery-item" data-img="images/Postman - Postman API Fundamentals Student Expert - 2024-03-08.png" data-title="Postman API Expert" data-logo="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/postman.svg" data-detail="Validates API testing, request collections, collaboration workflows, and API lifecycle practices."><img src="images/Postman - Postman API Fundamentals Student Expert - 2024-03-08.png" alt="Postman API Expert" /></button>
+              <button class="gallery-item" data-img="images/go-basic-badge.svg" data-title="Go (Basic) Verified" data-logo="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/go.svg" data-detail="Covers Go syntax, core language features, and fundamental problem-solving with idiomatic Go."><img src="images/go-basic-badge.svg" alt="Go Basic Verified badge" /></button>
+              <button class="gallery-item" data-img="images/advanced-kubernetes-operators.svg" data-title="Advanced Kubernetes Operators" data-logo="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/ibm.svg" data-detail="IBM Skills Network credential focused on advanced Kubernetes operations and cluster-level management patterns."><img src="images/advanced-kubernetes-operators.svg" alt="Advanced Kubernetes Operators badge" /></button>
+
+              <button class="gallery-item" data-img="images/AWS-SA.png" data-title="AWS Solutions Architect" data-logo="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/amazonaws.svg" data-detail="Validates architecture design, security, high availability, and cost optimization on AWS."><img src="images/AWS-SA.png" alt="AWS Solutions Architect" /></button>
+              <button class="gallery-item" data-img="images/Docker.png" data-title="Docker Essentials" data-logo="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/docker.svg" data-detail="Covers container fundamentals, image lifecycle, and efficient packaging of backend applications."><img src="images/Docker.png" alt="Docker Essentials" /></button>
+              <button class="gallery-item" data-img="images/K8.png" data-title="Kubernetes Fundamentals" data-logo="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/kubernetes.svg" data-detail="Demonstrates hands-on understanding of workloads, scaling, networking, and Kubernetes operations."><img src="images/K8.png" alt="Kubernetes Fundamentals" /></button>
+              <button class="gallery-item" data-img="images/aws net.png" data-title="AWS Networking Core" data-logo="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/amazonaws.svg" data-detail="Focuses on VPC design, routing controls, secure connectivity, and cloud network architecture."><img src="images/aws net.png" alt="AWS Networking Core" /></button>
+              <button class="gallery-item" data-img="images/Postman - Postman API Fundamentals Student Expert - 2024-03-08.png" data-title="Postman API Expert" data-logo="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/postman.svg" data-detail="Validates API testing, request collections, collaboration workflows, and API lifecycle practices."><img src="images/Postman - Postman API Fundamentals Student Expert - 2024-03-08.png" alt="Postman API Expert" /></button>
+              <button class="gallery-item" data-img="images/go-basic-badge.svg" data-title="Go (Basic) Verified" data-logo="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/go.svg" data-detail="Covers Go syntax, core language features, and fundamental problem-solving with idiomatic Go."><img src="images/go-basic-badge.svg" alt="Go Basic Verified badge" /></button>
+              <button class="gallery-item" data-img="images/advanced-kubernetes-operators.svg" data-title="Advanced Kubernetes Operators" data-logo="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/ibm.svg" data-detail="IBM Skills Network credential focused on advanced Kubernetes operations and cluster-level management patterns."><img src="images/advanced-kubernetes-operators.svg" alt="Advanced Kubernetes Operators badge" /></button>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <!-- Scripts -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/jquery.scrolly.min.js"></script>
-        <script src="assets/js/jquery.scrollex.min.js"></script>
-        <script src="assets/js/browser.min.js"></script>
-        <script src="assets/js/breakpoints.min.js"></script>
-        <script src="assets/js/util.js"></script>
-        <script src="assets/js/main.js"></script>
+      <section class="extra-certs section" id="extra-certs">
+        <div class="panel">
+          <p class="eyebrow">Additional Certificates</p>
+          <h2>Additional Learning Certificates</h2>
+          <p class="lead">A compact view of three extra certifications. Click any one to open it in detail.</p>
 
-        <!-- JavaScript for Slideshow -->
-        <script>
-            var slideIndex = 1;
-            showSlides(slideIndex);
+          <div class="extra-cert-carousel">
+            <button class="cert-nav prev" type="button" aria-label="Scroll certificates left">&#10094;</button>
+            <div class="extra-cert-grid" id="extra-cert-grid">
+              <button class="extra-cert-item" data-img="images/docker1.png" data-title="Docker Foundations Professional Certificate" data-logo="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/docker.svg" data-detail="LinkedIn Learning path certificate covering Docker products and containerization fundamentals.">
+                <img src="images/docker1.png" alt="Docker Foundations Professional Certificate" />
+              </button>
+              <button class="extra-cert-item" data-img="images/gitlab.png" data-title="GitLab CI Fundamentals Certificate" data-logo="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/gitlab.svg" data-detail="Validates practical understanding of GitLab CI fundamentals and workflow automation.">
+                <img src="images/gitlab.png" alt="GitLab CI Fundamentals Certificate" />
+              </button>
+              <button class="extra-cert-item" data-img="images/python.png" data-title="PCAP: Programming Essentials in Python" data-logo="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/python.svg" data-detail="Statement of achievement for core Python programming essentials and foundational software concepts.">
+                <img src="images/python.png" alt="PCAP Python Certificate" />
+              </button>
+            </div>
+            <button class="cert-nav next" type="button" aria-label="Scroll certificates right">&#10095;</button>
+          </div>
+        </div>
+      </section>
+    </main>
 
-            function plusSlides(n) {
-                showSlides(slideIndex += n);
-            }
+    <footer class="site-footer">
+      <p>&copy; Poorna Teja Vengala. All rights reserved.</p>
+    </footer>
 
-            function currentSlide(n) {
-                showSlides(slideIndex = n);
-            }
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <div class="lightbox-inner">
+        <button class="lightbox-close" type="button" aria-label="Close">&times;</button>
+        <div class="lightbox-layout">
+          <div class="lightbox-media">
+            <img id="lightbox-image" src="" alt="" />
+          </div>
+          <aside class="lightbox-side">
+            <img id="lightbox-logo" src="" alt="" />
+            <h3 id="lightbox-title"></h3>
+            <p id="lightbox-detail"></p>
+          </aside>
+        </div>
+      </div>
+    </div>
 
-            function showSlides(n) {
-                var i;
-                var slides = document.getElementsByClassName("mySlides");
-                var dots = document.getElementsByClassName("dot");
-                if (n > slides.length) { slideIndex = 1 }
-                if (n < 1) { slideIndex = slides.length }
-                for (i = 0; i < slides.length; i++) {
-                    slides[i].style.display = "none";
-                }
-                for (i = 0; i < dots.length; i++) {
-                    dots[i].className = dots[i].className.replace(" active", "");
-                }
-                slides[slideIndex - 1].style.display = "block";
-                dots[slideIndex - 1].className += " active";
-            }
-        </script>
-    </body>
+    <script src="assets/js/neo.js"></script>
+  </body>
 </html>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" role="img" aria-labelledby="title desc">
+  <title id="title">Advanced Kubernetes Operators</title>
+  <desc id="desc">IBM Skills Network Advanced badge</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0A2C8B"/>
+      <stop offset="100%" stop-color="#123FAF"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="320" rx="18" fill="url(#bg)"/>
+  <text x="22" y="64" fill="#FFFFFF" font-family="Outfit, Arial, sans-serif" font-size="40" font-weight="700">Advanced</text>
+  <text x="22" y="112" fill="#FFFFFF" font-family="Outfit, Arial, sans-serif" font-size="40" font-weight="700">Kubernetes</text>
+  <text x="22" y="160" fill="#FFFFFF" font-family="Outfit, Arial, sans-serif" font-size="40" font-weight="700">Operators</text>
+  <text x="224" y="48" fill="#BFD2FF" font-family="Outfit, Arial, sans-serif" font-size="28" font-weight="600">IBM</text>
+  <rect x="22" y="220" width="132" height="56" rx="10" fill="#0D1F57" opacity="0.85"/>
+  <text x="34" y="246" fill="#FFFFFF" font-family="Outfit, Arial, sans-serif" font-size="16" font-weight="600">IBM Skills</text>
+  <text x="34" y="266" fill="#AFC5FF" font-family="Outfit, Arial, sans-serif" font-size="14">Network</text>
+  <circle cx="56" cy="286" r="6" fill="#FFFFFF"/>
+  <circle cx="76" cy="286" r="6" fill="#FFFFFF" opacity="0.85"/>
+  <circle cx="96" cy="286" r="6" fill="#FFFFFF" opacity="0.7"/>
+  <rect x="246" y="236" width="12" height="42" rx="3" fill="#FFFFFF"/>
+  <rect x="266" y="226" width="12" height="52" rx="3" fill="#FFFFFF" opacity="0.85"/>
+  <rect x="286" y="216" width="12" height="62" rx="3" fill="#FFFFFF" opacity="0.7"/>
+</svg>

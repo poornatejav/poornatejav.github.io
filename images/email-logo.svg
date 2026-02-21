@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Email">
+  <circle cx="256" cy="256" r="256" fill="#6499cf"/>
+  <path d="M122 160h268v192H122z" fill="#efefef"/>
+  <path d="M122 160l134 116L390 160" fill="none" stroke="#3f79b5" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M122 352l102-98" fill="none" stroke="#3f79b5" stroke-width="12"/>
+  <path d="M390 352l-102-98" fill="none" stroke="#3f79b5" stroke-width="12"/>
+  <path d="M390 352V160l-134 116L122 160v192" fill="none" stroke="#3f79b5" stroke-width="10"/>
+  <path d="M390 352L290 254" fill="none" stroke="#2f6298" stroke-width="12" opacity="0.45"/>
+</svg>
