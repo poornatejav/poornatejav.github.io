@@ -1,0 +1,26 @@
+<svg width="520" height="120" viewBox="0 0 520 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ks_hex" x1="16" y1="10" x2="108" y2="104" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#C084FC"/>
+      <stop offset="0.52" stop-color="#FB7185"/>
+      <stop offset="1" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="ks_cube" x1="42" y1="30" x2="82" y2="78" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F8FAFC"/>
+      <stop offset="1" stop-color="#CBD5E1"/>
+    </linearGradient>
+    <linearGradient id="ks_text" x1="140" y1="26" x2="430" y2="93" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#E2E8F0"/>
+      <stop offset="0.45" stop-color="#F5D0FE"/>
+      <stop offset="1" stop-color="#FDBA74"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M62 10L108 34V86L62 110L16 86V34L62 10Z" stroke="url(#ks_hex)" stroke-width="6" fill="rgba(8,10,20,0.45)"/>
+  <path d="M62 30L80 40V60L62 70L44 60V40L62 30Z" fill="url(#ks_cube)"/>
+  <path d="M62 30L80 40L62 50L44 40L62 30Z" fill="#FFFFFF" fill-opacity="0.85"/>
+  <path d="M80 40V60L62 70V50L80 40Z" fill="#D1D5DB"/>
+  <path d="M44 40V60L62 70V50L44 40Z" fill="#94A3B8"/>
+
+  <text x="138" y="78" fill="url(#ks_text)" font-family="Outfit, Inter, Arial, sans-serif" font-size="64" font-weight="700" letter-spacing="0.6">KubeSolv</text>
+</svg>

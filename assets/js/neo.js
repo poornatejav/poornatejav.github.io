@@ -122,11 +122,11 @@
       Schema: ['#4d8ef0', '#7fa2ff'],
       Container: ['#3d7ad8', '#5fb4ff'],
       IaC: ['#4f73d8', '#7c9aff'],
-      Cloud: ['#3e6be0', '#4cc6d6'],
-      Data: ['#2d88c9', '#57d0d2'],
+      Cloud: ['#3e6be0', '#6b8ef5'],
+      Data: ['#2d88c9', '#57a8e8'],
       'CI/CD': ['#5f7fd8', '#8dc0ff'],
       Automation: ['#6072bf', '#8ba0e8'],
-      Scaler: ['#4873d1', '#56c0df'],
+      Scaler: ['#4873d1', '#56a0df'],
       Packaging: ['#5f77cc', '#80a8ee'],
       default: ['#4a79da', '#6da7f3']
     };
@@ -254,7 +254,7 @@
         const r = 50 + i * 28;
         ctx.beginPath();
         ctx.arc(core.x, core.y, r, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(95, 126, 194, ${0.18 - i * 0.04})`;
+        ctx.strokeStyle = `rgba(95, 126, 194, ${0.17 - i * 0.04})`;
         ctx.lineWidth = 1.1;
         ctx.stroke();
       }
@@ -316,7 +316,7 @@
 
       ctx.beginPath();
       ctx.arc(n.px, n.py, r + (active ? 3.5 : 1.6), 0, Math.PI * 2);
-      ctx.fillStyle = active ? 'rgba(145, 197, 245, 0.2)' : 'rgba(117, 157, 214, 0.12)';
+      ctx.fillStyle = active ? 'rgba(145, 197, 245, 0.22)' : 'rgba(117, 157, 214, 0.13)';
       ctx.fill();
 
       const g = ctx.createRadialGradient(n.px - r * 0.3, n.py - r * 0.35, r * 0.3, n.px, n.py, r * 1.1);
