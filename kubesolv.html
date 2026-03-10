@@ -8,20 +8,31 @@
       name="description"
       content="KubeSolv is an AI-powered Kubernetes operations platform for real-time detection, notification, and auto-healing."
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
       :root {
-        --bg: #060a14;
-        --panel: rgba(10, 18, 35, 0.72);
-        --line: rgba(108, 150, 219, 0.24);
-        --text: #e7efff;
-        --muted: #9ab0d6;
-        --brand: #1f7af0;
-        --cyan: #21a5ce;
-        --violet: #5f7cf4;
-        --ok: #1f9de5;
-        --warn: #6caeff;
-        --bad: #7f92f2;
-        --shadow: 0 20px 46px rgba(14, 8, 27, 0.34);
+        --bg: #000;
+        --text: rgba(255, 255, 255, 0.95);
+        --muted: rgba(255, 255, 255, 0.75);
+        --muted-2: rgba(255, 255, 255, 0.55);
+        --card: rgba(13, 13, 13, 0.8);
+        --card-2: rgba(255, 255, 255, 0.04);
+        --border: rgba(255, 255, 255, 0.1);
+        --border-2: rgba(255, 255, 255, 0.06);
+        --line: rgba(255, 255, 255, 0.08);
+        --accent: #814ac8;
+        --accent-2: #df7afe;
+        --ok: #16c6d3;
+        --warn: #f0b44f;
+        --bad: #ef6a7a;
+        --shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+        --shadow-soft: 0 14px 40px rgba(0, 0, 0, 0.35);
+        --radius-xl: 26px;
+        --radius-lg: 20px;
+        --radius-md: 16px;
+        --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
       }
 
       * {
@@ -34,14 +45,41 @@
 
       body {
         margin: 0;
-        font-family: Inter, Poppins, 'Segoe UI', system-ui, sans-serif;
+        font-family: 'Figtree', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
         color: var(--text);
         background:
-          radial-gradient(circle at 6% -3%, rgba(31, 122, 240, 0.28), transparent 36%),
-          radial-gradient(circle at 90% 0%, rgba(95, 124, 244, 0.22), transparent 40%),
-          radial-gradient(circle at 50% 120%, rgba(79, 184, 255, 0.18), transparent 52%),
-          linear-gradient(180deg, rgba(7, 13, 28, 0.97), rgba(6, 10, 20, 0.99)),
-          var(--bg);
+          radial-gradient(circle at 20% 0%, rgba(223, 122, 254, 0.18), transparent 42%),
+          radial-gradient(circle at 85% 8%, rgba(129, 74, 200, 0.18), transparent 38%),
+          radial-gradient(circle at 55% 85%, rgba(22, 198, 211, 0.12), transparent 46%),
+          linear-gradient(180deg, #000 0%, #000 100%);
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: 'Figtree', system-ui, sans-serif;
+        margin: 0 0 0.6rem;
+        letter-spacing: -0.02em;
+      }
+
+      p {
+        margin: 0 0 1rem;
+        color: var(--muted);
+      }
+
+      .muted {
+        color: var(--muted-2);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
       }
 
       .bg-canvas {
@@ -49,319 +87,309 @@
         inset: 0;
         pointer-events: none;
         z-index: 0;
+        opacity: 0.28;
       }
 
       .shell {
-        width: min(1180px, calc(100% - 2rem));
+        width: min(1200px, calc(100% - 2rem));
         margin: 0 auto;
         position: relative;
         z-index: 1;
       }
 
-      .topbar {
-        margin-top: 1rem;
-        padding: 0.78rem 1rem;
-        border: 1px solid var(--line);
-        border-radius: 1rem;
-        background: rgba(9, 16, 31, 0.72);
-        backdrop-filter: blur(8px);
-        box-shadow: var(--shadow);
+      .nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 1rem;
+        padding: 1.1rem 0;
+        position: sticky;
+        top: 0;
+        background: rgba(13, 13, 13, 0.72);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid var(--border);
+        z-index: 10;
       }
 
       .brand {
-        text-decoration: none;
-        color: var(--text);
         display: inline-flex;
         align-items: center;
-        gap: 0.55rem;
-        font-weight: 800;
-        letter-spacing: 0.02em;
+        gap: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        font-size: 0.85rem;
       }
 
       .brand img {
-        height: 2rem;
+        height: 30px;
         width: auto;
-        display: block;
       }
 
-      .topnav {
+      .nav-links {
         display: flex;
-        gap: 0.45rem;
+        gap: 1.4rem;
+        font-size: 0.95rem;
+        color: var(--muted);
         flex-wrap: wrap;
       }
 
-      .topnav a {
-        text-decoration: none;
-        color: var(--muted);
-        border: 1px solid var(--line);
+      .nav-links a:hover {
+        color: #fff;
+      }
+
+      .btn {
+        padding: 0.75rem 1.4rem;
         border-radius: 999px;
-        padding: 0.42rem 0.74rem;
-        font-size: 0.72rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        font-weight: 700;
-        transition: 0.2s ease;
-      }
-
-      .topnav a:hover {
-        color: #f3f8ff;
-        border-color: rgba(31, 122, 240, 0.45);
-      }
-
-      .section {
-        padding-top: 4rem;
-      }
-
-      .video-banner {
-        padding-top: 2.2rem;
-      }
-
-      .video-strip {
-        width: 100vw;
-        max-width: 100vw;
-        margin-left: calc(50% - 50vw);
-        margin-right: calc(50% - 50vw);
-      }
-
-      .integration-visual {
-        position: relative;
-        border: 0;
-        border-radius: 0;
-        overflow: hidden;
+        border: 1px solid transparent;
+        font-weight: 600;
+        font-size: 0.95rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        transition: transform 0.22s var(--ease-out), background 0.22s var(--ease-out), border-color 0.22s var(--ease-out), color 0.22s var(--ease-out);
+        cursor: pointer;
         background: transparent;
-        height: clamp(13rem, 30vw, 24rem);
-        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 13%, #000 87%, transparent 100%);
-        mask-image: linear-gradient(to bottom, transparent 0%, #000 13%, #000 87%, transparent 100%);
       }
 
-      .integration-video {
-        position: absolute;
-        inset: -13% 0;
-        width: 100%;
-        height: 126%;
-        display: block;
-        object-fit: cover;
-        object-position: center;
-        transform: none;
-        filter: saturate(1.06) contrast(1.03);
+      .btn-primary {
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+        color: #000;
+        border-color: transparent;
+        box-shadow: 0 18px 44px rgba(129, 74, 200, 0.28);
       }
 
-      .reveal {
-        opacity: 0;
-        transform: translateY(16px);
-        transition: opacity 0.7s ease, transform 0.7s ease;
+      .btn-primary:hover {
+        transform: translateY(-2px);
       }
 
-      .reveal.in {
-        opacity: 1;
-        transform: translateY(0);
+      .btn-outline {
+        background: rgba(255, 255, 255, 0.04);
+        border-color: var(--border);
+        color: #fff;
       }
 
-      .hero {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-      }
-
-      .panel {
-        border: 1px solid var(--line);
-        border-radius: 1.35rem;
-        background: var(--panel);
-        box-shadow: var(--shadow);
-      }
-
-      .hero-copy {
-        padding: clamp(1rem, 3vw, 2.2rem);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero-copy::before {
-        content: '';
-        position: absolute;
-        width: 18rem;
-        height: 18rem;
-        right: -8rem;
-        top: -8rem;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(79, 184, 255, 0.24), rgba(79, 184, 255, 0));
-        pointer-events: none;
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.3rem 0.7rem;
+        border-radius: 999px;
+        background: rgba(129, 74, 200, 0.18);
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 600;
+        font-size: 0.75rem;
+        letter-spacing: 0.04em;
       }
 
       .eyebrow {
         margin: 0;
-        color: var(--brand);
-        font-size: 0.73rem;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.72rem;
         letter-spacing: 0.14em;
         text-transform: uppercase;
-        font-weight: 800;
+        font-weight: 700;
       }
 
-      h1,
-      h2,
-      h3 {
-        margin: 0;
-        line-height: 1.12;
+      .section {
+        padding: 4.5rem 0;
       }
 
-      h1 {
-        font-size: clamp(2rem, 4.9vw, 3.8rem);
-        margin-top: 0.8rem;
-        letter-spacing: -0.03em;
-        text-wrap: balance;
+      .reveal {
+        opacity: 0;
+        transform: translateY(26px);
+        transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+        will-change: opacity, transform;
       }
 
-      h2 {
-        font-size: clamp(1.55rem, 3.7vw, 2.65rem);
+      .reveal.is-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .card {
+        transition: transform 0.22s var(--ease-out), border-color 0.22s var(--ease-out), box-shadow 0.22s var(--ease-out);
+      }
+
+      .card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(223, 122, 254, 0.28);
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.6);
+      }
+
+      :focus-visible {
+        outline: 2px solid rgba(223, 122, 254, 0.55);
+        outline-offset: 3px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        .reveal {
+          transition: none !important;
+          transform: none !important;
+          opacity: 1 !important;
+        }
+        .card,
+        .btn {
+          transition: none !important;
+        }
+      }
+
+      .hero {
+        padding-top: 2rem;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2.5rem;
+        align-items: start;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.6rem, 4vw, 4rem);
+        line-height: 1.05;
       }
 
       .hero-sub {
-        margin: 0.9rem 0 0;
-        color: var(--muted);
-        font-size: clamp(1rem, 2vw, 1.15rem);
-        max-width: 34ch;
+        font-size: clamp(1rem, 1.8vw, 1.2rem);
+        max-width: 36ch;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        margin-top: 1.6rem;
       }
 
       .signal-strip {
-        margin-top: 0.95rem;
+        margin-top: 1rem;
         display: flex;
         flex-wrap: wrap;
-        gap: 0.4rem;
+        gap: 0.45rem;
       }
 
       .signal-token {
-        font-weight: 800;
+        font-weight: 700;
         letter-spacing: 0.02em;
-        border: 1px solid rgba(96, 163, 255, 0.24);
-        background: rgba(79, 184, 255, 0.14);
-        color: #e2ecff;
-        border-color: rgba(96, 163, 255, 0.35);
-        background: rgba(64, 119, 217, 0.24);
+        border: 1px solid rgba(31, 122, 240, 0.22);
+        background: rgba(31, 122, 240, 0.08);
+        color: #1b4f9b;
         border-radius: 999px;
-        padding: 0.3rem 0.6rem;
+        padding: 0.3rem 0.65rem;
         transition: 0.35s ease;
-        opacity: 0;
-        transform: translateY(6px) scale(0.98);
-        animation: tokenIn 0.55s ease forwards;
-      }
-
-      .signal-token:nth-child(1) {
-        animation-delay: 0.15s;
-      }
-
-      .signal-token:nth-child(2) {
-        animation-delay: 0.4s;
-      }
-
-      .signal-token:nth-child(3) {
-        animation-delay: 0.66s;
-      }
-
-      @keyframes tokenIn {
-        to {
-          opacity: 1;
-          transform: translateY(0) scale(1);
-        }
       }
 
       .signal-token.alert {
         color: #fff;
-        background: linear-gradient(135deg, #3968ff, #21a5ce);
+        background: linear-gradient(135deg, #1f7af0, #21a5ce);
         border-color: transparent;
-        box-shadow: 0 0 0 6px rgba(79, 184, 255, 0.12);
+        box-shadow: 0 0 0 6px rgba(31, 122, 240, 0.12);
       }
 
-      .hero-actions {
-        margin-top: 1.4rem;
+      .trust {
+        margin-top: 2.6rem;
         display: flex;
-        gap: 0.65rem;
+        align-items: center;
+        gap: 1.2rem;
+        flex-wrap: wrap;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .trust-logos {
+        display: flex;
+        gap: 0.6rem;
+        align-items: center;
         flex-wrap: wrap;
       }
 
-      .btn {
-        border: 1px solid var(--line);
-        border-radius: 0.85rem;
-        padding: 0.72rem 1rem;
-        text-decoration: none;
-        font: inherit;
-        font-weight: 700;
-        letter-spacing: 0.02em;
-        cursor: pointer;
-        transition: transform 0.2s ease;
-      }
-
-      .btn:hover {
-        transform: translateY(-1px);
-      }
-
-      .btn-primary {
-        color: #fff;
-        border-color: transparent;
-        background: linear-gradient(135deg, #1f7af0, #21a5ce);
-      }
-
-      .btn-secondary {
-        color: #dbe7ff;
-        background: rgba(11, 20, 38, 0.7);
-      }
-
-      .hero-map-wrap {
-        padding: 1rem;
-        min-height: 22rem;
-        position: relative;
-        overflow: hidden;
-        isolation: isolate;
-      }
-
-      .hero-map-wrap::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background:
-          radial-gradient(circle at 22% 16%, rgba(31, 122, 240, 0.18), rgba(31, 122, 240, 0)),
-          radial-gradient(circle at 84% 76%, rgba(95, 124, 244, 0.16), rgba(95, 124, 244, 0)),
-          linear-gradient(165deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.05));
-        z-index: 0;
-        pointer-events: none;
-      }
-
-      .hero-map-wrap::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background:
-          linear-gradient(rgba(95, 124, 244, 0.09) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(95, 124, 244, 0.09) 1px, transparent 1px);
-        background-size: 34px 34px;
-        mask-image: radial-gradient(circle at 50% 48%, #000 45%, transparent 95%);
-        z-index: 0;
-        pointer-events: none;
-      }
-
-      #hero-map {
-        width: 100%;
-        height: 100%;
-        display: block;
-        position: relative;
-        z-index: 1;
-      }
-
-      .hero-console {
-        position: relative;
-        z-index: 2;
-        min-height: 100%;
-        border: 1px solid rgba(96, 130, 205, 0.24);
-        border-radius: 1rem;
-        background: linear-gradient(165deg, rgba(10, 19, 37, 0.92), rgba(12, 22, 44, 0.84));
-        box-shadow: inset 0 0 0 1px rgba(150, 187, 255, 0.16);
-        padding: 0.9rem;
+      .trust-logo {
+        width: 44px;
+        height: 32px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.03);
         display: grid;
-        gap: 0.66rem;
-        align-content: start;
+        place-items: center;
+        font-weight: 600;
+        color: var(--muted);
+        font-size: 0.7rem;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        backdrop-filter: blur(12px);
+      }
+
+      .hero-visual {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .assistant-card,
+      .task-board,
+      .founders {
+        padding: 1.2rem;
+        display: grid;
+        gap: 0.8rem;
+      }
+
+      .task-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+      }
+
+      .task-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.7rem 0.8rem;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.04);
+        font-size: 0.88rem;
+      }
+
+      .task-item span {
+        color: var(--muted-2);
+        font-size: 0.78rem;
+      }
+
+      .chip {
+        padding: 0.35rem 0.7rem;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--muted);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .assistant-input {
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+        color: var(--muted);
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        flex-wrap: wrap;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .assistant-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
       }
 
       .console-top {
@@ -372,19 +400,24 @@
       }
 
       .console-top strong {
-        font-size: 0.74rem;
+        font-size: 0.78rem;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: #8abaff;
+        color: rgba(255, 255, 255, 0.86);
       }
 
-      .console-ping {
-        font-size: 0.68rem;
-        color: #9fd5ff;
-        border: 1px solid rgba(31, 122, 240, 0.3);
-        border-radius: 999px;
-        padding: 0.2rem 0.46rem;
-        background: rgba(12, 22, 42, 0.82);
+      .console-intro {
+        border: 1px solid var(--border);
+        border-radius: 0.74rem;
+        background: rgba(255, 255, 255, 0.04);
+        padding: 0.6rem;
+      }
+
+      .console-intro p {
+        margin: 0;
+        font-size: 0.86rem;
+        color: var(--muted);
+        line-height: 1.5;
       }
 
       .console-grid {
@@ -394,81 +427,132 @@
       }
 
       .console-grid article {
-        border: 1px solid rgba(96, 130, 205, 0.25);
+        border: 1px solid var(--border);
         border-radius: 0.72rem;
-        background: rgba(14, 25, 48, 0.82);
+        background: rgba(255, 255, 255, 0.03);
         padding: 0.5rem;
+        display: grid;
+        gap: 0.25rem;
+        font-size: 0.78rem;
       }
 
       .console-grid span {
-        display: block;
-        font-size: 0.64rem;
-        letter-spacing: 0.1em;
+        color: var(--muted-2);
+        font-size: 0.7rem;
         text-transform: uppercase;
-        color: #94a8d0;
+        letter-spacing: 0.08em;
       }
 
       .console-grid b {
-        display: block;
-        margin-top: 0.2rem;
-        color: #d8e6ff;
+        font-weight: 600;
+        color: #fff;
       }
 
       .console-stream {
-        border: 1px solid rgba(96, 130, 205, 0.22);
-        border-radius: 0.74rem;
-        background: rgba(12, 22, 43, 0.78);
-        padding: 0.58rem;
+        display: grid;
+        gap: 0.35rem;
+        font-size: 0.78rem;
+        color: var(--muted);
+      }
+
+      .founder {
+        display: grid;
+        gap: 0.2rem;
+        padding: 0.6rem 0.7rem;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.04);
+        font-size: 0.82rem;
+      }
+
+      .founder strong {
+        color: #fff;
+        font-size: 0.88rem;
+      }
+
+      .services-header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+        gap: 2rem;
+        margin-top: 2.5rem;
+      }
+
+      .service-cards {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .service-card {
+        padding: 1.4rem;
+        display: grid;
+        gap: 0.8rem;
+      }
+
+      .service-tags {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+        margin-top: 2.3rem;
+      }
+
+      .process-card {
+        padding: 1.5rem;
+        display: grid;
+        gap: 1rem;
+      }
+
+      .step {
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        color: var(--muted-2);
+        text-transform: uppercase;
+      }
+
+      .checklist {
         display: grid;
         gap: 0.4rem;
+        font-size: 0.85rem;
+        color: var(--muted);
       }
 
-      .console-stream small {
-        display: block;
-        font-size: 0.67rem;
-        color: #b1c3e5;
+      .demo-grid {
+        margin-top: 1.4rem;
+        display: grid;
+        grid-template-columns: 1.06fr 0.94fr;
+        gap: 1.4rem;
       }
 
-      .console-stream small::before {
-        content: '●';
-        font-size: 0.46rem;
-        margin-right: 0.4rem;
-        color: #5f7cf4;
-        vertical-align: middle;
-      }
-
-      .console-intro {
-        border: 1px solid rgba(95, 129, 205, 0.2);
-        border-radius: 0.74rem;
-        background: rgba(12, 23, 43, 0.82);
-        padding: 0.58rem;
-      }
-
-      .console-intro p {
-        margin: 0;
-        font-size: 0.84rem;
-        color: #b6c9ea;
-        line-height: 1.5;
+      .demo-card {
+        padding: 1.1rem;
+        position: relative;
       }
 
       .hero-map-head {
-        position: absolute;
-        z-index: 3;
-        left: 1rem;
-        right: 1rem;
-        top: 0.7rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 0.5rem;
-        pointer-events: none;
       }
 
       .hero-map-title {
         font-size: 0.7rem;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: #8abaff;
+        color: #1f4fa1;
         font-weight: 800;
       }
 
@@ -479,10 +563,10 @@
       }
 
       .hero-health span {
-        border: 1px solid rgba(92, 121, 196, 0.22);
+        border: 1px solid var(--border);
         border-radius: 999px;
-        background: rgba(10, 20, 37, 0.82);
-        color: #c6d7f3;
+        background: #f9faff;
+        color: var(--muted);
         padding: 0.17rem 0.42rem;
         font-size: 0.62rem;
         font-weight: 700;
@@ -496,15 +580,87 @@
         margin-right: 0.28rem;
       }
 
+      #live-intel-map {
+        width: 100%;
+        display: block;
+        border: 1px solid rgba(31, 122, 240, 0.25);
+        border-radius: 0.95rem;
+        background: #0c1326;
+        height: 19rem;
+      }
+
+      .intel-strip {
+        margin-top: 0.44rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+
+      .intel-strip span {
+        border: 1px solid rgba(31, 122, 240, 0.25);
+        border-radius: 999px;
+        background: rgba(12, 19, 38, 0.92);
+        color: #c9d8ff;
+        font-size: 0.66rem;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        padding: 0.16rem 0.44rem;
+      }
+
+      .intel-meta {
+        margin-top: 0.66rem;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.55rem;
+      }
+
+      .intel-meta article {
+        border: 1px solid var(--border);
+        border-radius: 0.72rem;
+        background: rgba(255, 255, 255, 0.04);
+        padding: 0.48rem;
+      }
+
+      .intel-meta span {
+        display: block;
+        font-size: 0.63rem;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: var(--muted-2);
+      }
+
+      .intel-meta b {
+        display: block;
+        color: #fff;
+        margin-top: 0.18rem;
+        font-size: 0.95rem;
+      }
+
+      .state-legend {
+        display: flex;
+        gap: 1rem;
+        color: var(--muted);
+        font-size: 0.82rem;
+        margin-top: 0.58rem;
+      }
+
+      .state-legend i {
+        width: 0.62rem;
+        height: 0.62rem;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 0.34rem;
+      }
+
       .cluster-tooltip {
         position: absolute;
         pointer-events: none;
         z-index: 5;
         min-width: 170px;
         max-width: 240px;
-        border: 1px solid rgba(91, 131, 230, 0.45);
+        border: 1px solid rgba(31, 122, 240, 0.35);
         border-radius: 0.8rem;
-        background: rgba(12, 22, 44, 0.9);
+        background: rgba(12, 22, 44, 0.95);
         box-shadow: 0 18px 28px rgba(3, 8, 21, 0.35);
         color: #dce8ff;
         padding: 0.54rem 0.64rem;
@@ -535,166 +691,12 @@
         margin-bottom: 0.16rem;
       }
 
-      .lead {
-        margin: 0.78rem 0 0;
-        color: var(--muted);
-      }
-
-      .feature-grid {
-        margin-top: 1rem;
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 0.9rem;
-      }
-
-      .feature {
-        padding: 1rem;
-        transition: transform 0.2s ease, border-color 0.2s ease;
-      }
-
-      .feature:hover {
-        transform: translateY(-4px);
-        border-color: rgba(79, 184, 255, 0.45);
-      }
-
-      .feature .k-icon {
-        width: 2rem;
-        height: 2rem;
-        border-radius: 0.58rem;
-        background: rgba(79, 184, 255, 0.14);
-        color: var(--brand);
-        font-weight: 800;
-        display: grid;
-        place-items: center;
-      }
-
-      .feature p {
-        margin: 0.45rem 0 0;
-        color: var(--muted);
-        font-size: 0.91rem;
-      }
-
-      .how-grid {
-        margin-top: 1rem;
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 0.8rem;
-      }
-
-      .how-step {
-        padding: 1rem;
-      }
-
-      .how-step b {
-        width: 1.48rem;
-        height: 1.48rem;
-        border-radius: 999px;
-        display: inline-grid;
-        place-items: center;
-        color: var(--brand);
-        background: rgba(79, 184, 255, 0.14);
-        font-size: 0.8rem;
-      }
-
-      .how-step p {
-        margin: 0.62rem 0 0;
-        color: var(--muted);
-        font-size: 0.9rem;
-      }
-
-      .demo-grid {
-        margin-top: 1rem;
-        display: grid;
-        grid-template-columns: 1.06fr 0.94fr;
-        gap: 1rem;
-      }
-
-      .demo-card {
-        padding: 1rem;
-      }
-
-      #live-intel-map {
-        width: 100%;
-        display: block;
-        border: 1px solid var(--line);
-        border-radius: 0.95rem;
-        background: rgba(10, 18, 33, 0.72);
-      }
-
-      .intel-strip {
-        margin-top: 0.44rem;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem;
-      }
-
-      .intel-strip span {
-        border: 1px solid rgba(99, 152, 228, 0.28);
-        border-radius: 999px;
-        background: rgba(9, 20, 39, 0.72);
-        color: #b7cae8;
-        font-size: 0.66rem;
-        letter-spacing: 0.07em;
-        text-transform: uppercase;
-        padding: 0.16rem 0.44rem;
-      }
-
-      #live-intel-map {
-        height: 19rem;
-      }
-
-      .intel-meta {
-        margin-top: 0.66rem;
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 0.55rem;
-      }
-
-      .intel-meta article {
-        border: 1px solid rgba(96, 130, 205, 0.22);
-        border-radius: 0.72rem;
-        background: rgba(12, 23, 44, 0.82);
-        padding: 0.48rem;
-      }
-
-      .intel-meta span {
-        display: block;
-        font-size: 0.63rem;
-        letter-spacing: 0.09em;
-        text-transform: uppercase;
-        color: #96acd4;
-      }
-
-      .intel-meta b {
-        display: block;
-        color: #d7e5ff;
-        margin-top: 0.18rem;
-        font-size: 0.95rem;
-      }
-
-      .state-legend {
-        display: flex;
-        gap: 1rem;
-        color: var(--muted);
-        font-size: 0.82rem;
-        margin-top: 0.58rem;
-      }
-
-      .state-legend i {
-        width: 0.62rem;
-        height: 0.62rem;
-        border-radius: 50%;
-        display: inline-block;
-        margin-right: 0.34rem;
-      }
-
       .support-panel {
         margin-top: 0.78rem;
-        border: 1px solid rgba(106, 138, 210, 0.28);
+        border: 1px solid var(--border);
         border-radius: 0.9rem;
-        background: linear-gradient(155deg, rgba(16, 27, 48, 0.88), rgba(10, 19, 34, 0.88));
+        background: rgba(255, 255, 255, 0.03);
         padding: 0.72rem 0.8rem;
-        box-shadow: inset 0 0 0 1px rgba(162, 196, 245, 0.11);
       }
 
       .support-panel h4 {
@@ -702,7 +704,7 @@
         font-size: 0.79rem;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: #8cb8ff;
+        color: rgba(255, 255, 255, 0.85);
       }
 
       .think-steps {
@@ -715,18 +717,18 @@
       }
 
       .think-steps li {
-        border: 1px solid rgba(98, 124, 186, 0.25);
+        border: 1px solid var(--border);
         border-radius: 0.7rem;
-        background: rgba(13, 23, 43, 0.76);
+        background: rgba(255, 255, 255, 0.03);
         padding: 0.44rem 0.5rem;
-        color: #c8d8f3;
+        color: rgba(255, 255, 255, 0.86);
         font-size: 0.76rem;
         line-height: 1.4;
       }
 
       .think-steps b {
         display: block;
-        color: #a8c5f5;
+        color: rgba(223, 122, 254, 0.9);
         font-size: 0.65rem;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -742,10 +744,10 @@
       }
 
       .timeline li {
-        border: 1px solid var(--line);
+        border: 1px solid var(--border);
         border-radius: 0.8rem;
-        background: rgba(11, 22, 42, 0.76);
-        color: #bed2f0;
+        background: rgba(255, 255, 255, 0.04);
+        color: rgba(255, 255, 255, 0.9);
         padding: 0.58rem 0.68rem;
         font-size: 0.85rem;
         display: flex;
@@ -774,7 +776,7 @@
 
       .metric p {
         margin: 0;
-        color: var(--muted);
+        color: var(--muted-2);
         font-size: 0.7rem;
         letter-spacing: 0.12em;
         text-transform: uppercase;
@@ -786,15 +788,15 @@
         display: block;
         margin-top: 0.35rem;
         border-radius: 0.5rem;
-        background: rgba(10, 20, 38, 0.74);
+        background: #0c1326;
       }
 
       .chat {
         margin-top: 0.75rem;
-        border: 1px solid var(--line);
+        border: 1px solid var(--border);
         border-radius: 0.9rem;
         padding: 0.78rem;
-        background: rgba(10, 20, 38, 0.76);
+        background: rgba(255, 255, 255, 0.03);
       }
 
       .bubble {
@@ -806,53 +808,223 @@
 
       .bubble.ask {
         margin-left: auto;
-        background: #1a2f5c;
-        color: #dbe7ff;
+        background: rgba(255, 255, 255, 0.06);
+        color: rgba(255, 255, 255, 0.92);
       }
 
       .bubble.answer {
         margin-top: 0.45rem;
-        background: #173f4a;
-        color: #d3f4ff;
+        background: rgba(129, 74, 200, 0.18);
+        color: rgba(255, 255, 255, 0.92);
       }
 
       .bubble.answer.alt {
         margin-top: 0.5rem;
-        background: #222f5d;
-        color: #dde6ff;
+        background: rgba(223, 122, 254, 0.16);
+        color: rgba(255, 255, 255, 0.92);
+      }
+
+      .cases-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.4rem;
+        margin-top: 2.4rem;
+      }
+
+      .case-card {
+        padding: 1.2rem;
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .case-image {
+        height: 180px;
+        border-radius: 16px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .impact {
+        display: grid;
+        gap: 0.4rem;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .benefit-card {
+        padding: 1.2rem;
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .pricing-toggle {
+        display: inline-flex;
+        gap: 0.3rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 0.25rem;
+        font-weight: 600;
+      }
+
+      .pricing-toggle button {
+        border: none;
+        background: transparent;
+        padding: 0.45rem 0.9rem;
+        border-radius: 999px;
+        font-weight: 600;
+        cursor: pointer;
+        color: var(--muted);
+      }
+
+      .pricing-toggle button.active {
+        background: linear-gradient(135deg, rgba(129, 74, 200, 0.9), rgba(223, 122, 254, 0.9));
+        color: #000;
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.3rem;
+        margin-top: 2.2rem;
+      }
+
+      .price-card {
+        padding: 1.6rem;
+        display: grid;
+        gap: 0.8rem;
+        position: relative;
+      }
+
+      .price-card.popular {
+        border: 2px solid rgba(223, 122, 254, 0.6);
+      }
+
+      .popular-badge {
+        position: absolute;
+        top: -12px;
+        right: 20px;
+        padding: 0.3rem 0.7rem;
+        background: rgba(223, 122, 254, 0.9);
+        color: #000;
+        border-radius: 999px;
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .price {
+        font-size: 2rem;
+        font-weight: 700;
+      }
+
+      .price small {
+        font-size: 1rem;
+        color: var(--muted);
+      }
+
+      .price-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 0.45rem;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.2rem;
+        margin-top: 2rem;
+      }
+
+      .testimonial {
+        padding: 1.4rem;
+        display: grid;
+        gap: 1rem;
+      }
+
+      .testimonial img {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      details {
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 0.9rem 1rem;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      details + details {
+        margin-top: 0.8rem;
+      }
+
+      summary {
+        cursor: pointer;
+        font-weight: 600;
+        color: #fff;
+      }
+
+      summary::marker {
+        color: var(--accent-2);
       }
 
       .cta {
-        margin-top: 1rem;
-        padding: 1.3rem;
-        background: linear-gradient(118deg, rgba(79, 184, 255, 0.24), rgba(31, 122, 240, 0.22));
+        display: grid;
+        gap: 1.2rem;
+        text-align: center;
+        padding: 3rem;
       }
 
-      .cta p {
-        margin: 0.54rem 0 0;
+      .cta-links {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        font-size: 0.9rem;
         color: var(--muted);
       }
 
       footer {
-        margin: 3rem 0 1.4rem;
-        border-top: 1px solid var(--line);
-        padding-top: 1rem;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 0.7rem;
-        color: var(--muted);
-        font-size: 0.84rem;
+        padding: 3rem 0 4rem;
       }
 
-      footer a {
-        color: var(--muted);
-        text-decoration: none;
-        margin-left: 0.9rem;
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.3fr 1fr 1fr 1fr;
+        gap: 2rem;
       }
 
-      footer a:hover {
-        color: var(--text);
+      .newsletter {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .newsletter input {
+        padding: 0.7rem 1rem;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        font-size: 0.9rem;
+      }
+
+      .footer-links {
+        display: grid;
+        gap: 0.6rem;
+        color: var(--muted);
+        font-size: 0.9rem;
       }
 
       .modal {
@@ -873,9 +1045,9 @@
 
       .modal-card {
         width: min(460px, 100%);
-        border: 1px solid var(--line);
+        border: 1px solid var(--border);
         border-radius: 1rem;
-        background: #0e1a33;
+        background: rgba(13, 13, 13, 0.96);
         box-shadow: var(--shadow);
         padding: 1rem;
       }
@@ -907,12 +1079,12 @@
       .field input {
         margin-top: 0.28rem;
         width: 100%;
-        border: 1px solid rgba(115, 156, 225, 0.35);
+        border: 1px solid var(--border);
         border-radius: 0.72rem;
         padding: 0.66rem 0.72rem;
         font: inherit;
-        color: #e5efff;
-        background: rgba(10, 20, 38, 0.82);
+        color: #fff;
+        background: rgba(255, 255, 255, 0.04);
       }
 
       .status {
@@ -922,42 +1094,18 @@
         color: #118f56;
       }
 
-      .how-grid.flow {
-        position: relative;
-      }
-
-      .how-grid.flow::before {
-        content: '';
-        position: absolute;
-        left: 4.6%;
-        right: 4.6%;
-        top: 1.62rem;
-        height: 2px;
-        background: linear-gradient(90deg, rgba(31, 122, 240, 0.26), rgba(95, 124, 244, 0.42), rgba(79, 184, 255, 0.26));
-        z-index: 0;
-      }
-
-      .how-grid.flow .how-step {
-        position: relative;
-        z-index: 1;
-      }
-
-      @media (max-width: 1040px) {
-        .hero,
+      @media (max-width: 980px) {
+        .hero-grid,
+        .services-grid,
+        .process-grid,
+        .footer-grid,
         .demo-grid {
           grid-template-columns: 1fr;
         }
 
-        .feature-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-
-        .how-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-
-        .how-grid.flow::before {
-          display: none;
+        .nav {
+          flex-wrap: wrap;
+          justify-content: center;
         }
 
         .intel-meta {
@@ -965,46 +1113,26 @@
         }
       }
 
-      @media (max-width: 700px) {
-        .shell {
-          width: min(1180px, calc(100% - 1rem));
+      @media (max-width: 640px) {
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: center;
         }
 
-        .section {
-          padding-top: 2.7rem;
-        }
-
-        .topbar {
+        .hero-actions {
           flex-direction: column;
           align-items: stretch;
         }
 
-        .feature-grid,
-        .how-grid,
+        .cta {
+          padding: 2rem 1.5rem;
+        }
+
         .metrics,
         .intel-meta,
-        .think-steps {
+        .think-steps,
+        .console-grid {
           grid-template-columns: 1fr;
-        }
-
-        .video-banner {
-          padding-top: 1.2rem;
-        }
-
-        .video-strip {
-          width: 100%;
-          max-width: 100%;
-          margin-left: 0;
-          margin-right: 0;
-        }
-
-        .integration-visual {
-          height: clamp(11rem, 52vw, 17rem);
-        }
-
-        .integration-video {
-          inset: -11% 0;
-          height: 122%;
         }
       }
     </style>
@@ -1012,184 +1140,641 @@
   <body>
     <canvas id="bg-canvas" class="bg-canvas" aria-hidden="true"></canvas>
 
-    <div class="shell">
-      <header class="topbar">
-        <a href="#hero" class="brand" aria-label="KubeSolv home">
+    <header class="shell">
+      <nav class="nav">
+        <a class="brand" href="#top" aria-label="KubeSolv home">
           <img src="images/kubesolv-logo.svg" alt="KubeSolv" />
+          KUBESOLV
         </a>
-        <nav class="topnav" aria-label="KubeSolv navigation">
+        <div class="nav-links">
           <a href="index.html">Portfolio</a>
-          <a href="#features">Features</a>
-          <a href="#how">How</a>
+          <a href="#services">Features</a>
+          <a href="#process">How</a>
           <a href="#demo">Demo</a>
-          <a href="#cta">Contact</a>
-        </nav>
-      </header>
+          <a href="#contact">Contact</a>
+        </div>
+        <a class="btn btn-primary" href="#contact">Request Access</a>
+      </nav>
+    </header>
 
-      <main>
-        <section class="section hero reveal" id="hero">
-          <article class="panel hero-copy">
+    <main id="top">
+      <section class="hero section shell">
+        <div class="hero-grid">
+          <div>
             <p class="eyebrow">AI-Powered Kubernetes Operations</p>
             <h1>Your Cluster Can Now Talk Back</h1>
             <p class="hero-sub">Answers questions about your Kubernetes cluster in real-time.</p>
-
             <div class="signal-strip" id="signal-strip" aria-live="polite">
               <span class="signal-token" data-signal="detect">Detects.</span>
               <span class="signal-token" data-signal="notify">Notifies.</span>
               <span class="signal-token" data-signal="heal">Auto-Heals.</span>
             </div>
-
             <div class="hero-actions">
               <button class="btn btn-primary" type="button" id="open-modal">Want to Know More?</button>
-              <a class="btn btn-secondary" href="#demo">Watch Demo</a>
+              <a class="btn btn-outline" href="#demo">Watch Demo</a>
             </div>
-          </article>
-
-          <aside class="panel hero-map-wrap">
-            <div class="hero-console">
+            <div class="trust">
+              <span>Built for Kubernetes-first teams</span>
+              <div class="trust-logos">
+                <div class="trust-logo">SRE</div>
+                <div class="trust-logo">K8s</div>
+                <div class="trust-logo">Ops</div>
+                <div class="trust-logo">Cloud</div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="card assistant-card">
               <div class="console-top">
                 <strong>AI-Powered Kubernetes Operator</strong>
+                <span class="chip">Design Partner</span>
               </div>
               <div class="console-intro">
                 <p>
-                  KubeSolv is currently in active development as an AI Kubernetes Operator built to reduce SRE toil,
-                  accelerate incident response, and deliver clear, explainable operations guidance.
+                  KubeSolv reduces SRE toil, accelerates incident response, and delivers explainable remediation guidance
+                  across production clusters.
                 </p>
               </div>
               <div class="console-grid">
-                <article><span>Real-time answers</span><b>Ask your cluster questions in plain English and receive context-aware diagnostics.</b></article>
-                <article><span>Auto-healing workflows</span><b>Safe remediation playbooks for restart, rollback, and right-sizing actions.</b></article>
-                <article><span>Root-cause intelligence</span><b>Correlation across logs, events, metrics, and rollout changes in one path.</b></article>
-                <article><span>Human-level automation</span><b>AI handles repetitive triage while operators stay in full control.</b></article>
+                <article>
+                  <span>Real-time answers</span>
+                  <b>Ask your cluster in plain English and receive context-aware diagnostics.</b>
+                </article>
+                <article>
+                  <span>Auto-healing workflows</span>
+                  <b>Safe remediation playbooks for restart, rollback, and right-sizing actions.</b>
+                </article>
+                <article>
+                  <span>Root-cause intelligence</span>
+                  <b>Correlation across logs, events, metrics, and rollout changes in one path.</b>
+                </article>
+                <article>
+                  <span>Human-level automation</span>
+                  <b>AI handles repetitive triage while operators stay in full control.</b>
+                </article>
               </div>
               <div class="console-stream">
-                <small>Built for Kubernetes-first teams running production-critical workloads</small>
-                <small>Designed around reliability, trust, explainability, and operator safety</small>
-                <small>Early design-partner access opens after core validation milestones</small>
+                <small>Built for production-critical workloads</small>
+                <small>Designed around reliability, trust, and operator safety</small>
+                <small>Early access opens after validation milestones</small>
               </div>
             </div>
-          </aside>
-        </section>
-
-        <section class="section reveal" id="features">
-          <h2>Built for Kubernetes AI Ops</h2>
-          <p class="lead">A focused product experience for cluster observability, incident response, and AI-assisted remediation.</p>
-
-          <div class="feature-grid">
-            <article class="panel feature"><div class="k-icon">1</div><h3>Real-time Cluster Intelligence</h3><p>Live workload visibility across nodes, pods, deployments, and service dependencies.</p></article>
-            <article class="panel feature"><div class="k-icon">2</div><h3>Auto-Healing Deployments</h3><p>Automatically executes safe restarts and rollout recovery for known failure conditions.</p></article>
-            <article class="panel feature"><div class="k-icon">3</div><h3>Instant Slack & Telegram Alerts</h3><p>Pushes actionable incident context directly to the channels your team already uses.</p></article>
-            <article class="panel feature"><div class="k-icon">4</div><h3>AI-Powered Root Cause Analysis</h3><p>Correlates events, logs, metrics, and release changes to expose likely failure sources.</p></article>
-            <article class="panel feature"><div class="k-icon">5</div><h3>Metrics-Driven Recommendations</h3><p>Identifies resource inefficiencies and recommends targeted workload tuning.</p></article>
-            <article class="panel feature"><div class="k-icon">6</div><h3>Predictive Scaling & Optimization</h3><p>Forecasts load pressure and proposes preemptive scaling before incidents occur.</p></article>
+            <div class="card task-board">
+              <div class="task-header">
+                <span>Ops Signal Feed</span>
+                <span class="chip">Live</span>
+              </div>
+              <div class="task-item">
+                Pod restart detected
+                <span>payments-api</span>
+              </div>
+              <div class="task-item">
+                Resource pressure
+                <span>billing-worker</span>
+              </div>
+              <div class="task-item">
+                Alert to Slack
+                <span>#k8s-incidents</span>
+              </div>
+              <div class="task-item">
+                Rollout rollback
+                <span>auth-service</span>
+              </div>
+              <div class="task-item">
+                Scaling recommendation
+                <span>cluster-east</span>
+              </div>
+            </div>
+            <div class="card founders">
+              <strong>Reliability Signals</strong>
+              <div class="founder">
+                <strong>Cluster Health</strong>
+                <span>99.98% uptime</span>
+                <span>5m detection window</span>
+              </div>
+              <div class="founder">
+                <strong>Ops Readiness</strong>
+                <span>Auto-playbooks enabled</span>
+                <span>Slack + Telegram alerts</span>
+              </div>
+              <div class="founder">
+                <strong>Efficiency</strong>
+                <span>40% fewer manual checks</span>
+                <span>Metrics-driven recommendations</span>
+              </div>
+            </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="section reveal" id="how">
-          <h2>How It Works</h2>
-          <div class="how-grid flow">
-            <article class="panel how-step"><b>1</b><p>Monitor your cluster continuously with workload and dependency awareness.</p></article>
-            <article class="panel how-step"><b>2</b><p>Detect anomalies by combining event streams with resource and rollout telemetry.</p></article>
-            <article class="panel how-step"><b>3</b><p>Auto-heal known failure patterns or suggest safe fixes for operator approval.</p></article>
-            <article class="panel how-step"><b>4</b><p>Chat with your cluster in real-time and ask direct operational questions.</p></article>
+      <section id="services" class="section shell">
+        <div class="services-header">
+          <div>
+            <div class="badge">KubeSolv Features</div>
+            <h2>Built for Kubernetes AI Ops</h2>
+            <p>A focused product experience for cluster observability, incident response, and AI-assisted remediation.</p>
           </div>
-        </section>
+        </div>
+        <div class="services-grid">
+          <div class="card task-board">
+            <div class="task-header">
+              <span>Auto-Heal Queue</span>
+              <span class="chip">Awaiting approval</span>
+            </div>
+            <div class="task-item">
+              Restart unhealthy pods
+              <span>2 pending</span>
+            </div>
+            <div class="task-item">
+              Rollback deployment
+              <span>1 pending</span>
+            </div>
+            <div class="task-item">
+              Scale worker pool
+              <span>forecasted</span>
+            </div>
+            <div class="task-item">
+              Update HPA policy
+              <span>scheduled</span>
+            </div>
+            <div class="task-item">
+              Verify recovery
+              <span>in progress</span>
+            </div>
+          </div>
+          <div class="service-cards">
+            <div class="card service-card">
+              <h3>Real-time Cluster Intelligence</h3>
+              <p>Live workload visibility across nodes, pods, deployments, and service dependencies.</p>
+              <div class="service-tags">
+                <span class="chip">Live diagnostics</span>
+                <span class="chip">Dependency map</span>
+              </div>
+            </div>
+            <div class="card service-card">
+              <h3>Auto-Healing Deployments</h3>
+              <p>Automatically executes safe restarts and rollout recovery for known failure conditions.</p>
+              <div class="service-tags">
+                <span class="chip">Playbooks</span>
+                <span class="chip">Operator control</span>
+              </div>
+            </div>
+            <div class="card service-card">
+              <h3>AI Root Cause Analysis</h3>
+              <p>Correlates events, logs, metrics, and release changes to expose likely failure sources.</p>
+              <div class="service-tags">
+                <span class="chip">Signal correlation</span>
+                <span class="chip">Explainability</span>
+              </div>
+            </div>
+            <div class="card service-card">
+              <h3>Predictive Scaling &amp; Optimization</h3>
+              <p>Forecasts load pressure and proposes preemptive scaling before incidents occur.</p>
+              <div class="service-tags">
+                <span class="chip">Resource tuning</span>
+                <span class="chip">Cost awareness</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <section class="section reveal" id="demo">
-          <h2>Interactive Cluster Ops Demo</h2>
-          <div class="demo-grid">
-            <article class="panel demo-card">
-              <div class="hero-map-head" aria-hidden="true" style="position: static; margin-bottom: 0.55rem;">
-                <span class="hero-map-title">Live Cluster Intelligence</span>
-                <div class="hero-health">
-                  <span><i style="background: var(--ok)"></i>Healthy</span>
-                  <span><i style="background: var(--warn)"></i>Warning</span>
-                  <span><i style="background: var(--bad)"></i>Error</span>
-                </div>
-              </div>
-              <div class="intel-strip" aria-hidden="true">
-                <span>Namespace: production</span>
-                <span>Region: us-east-1</span>
-                <span>Refresh: 5s</span>
-              </div>
-              <p class="lead" style="font-size: 0.9rem; margin-top: 0.1rem;">Hover a node to inspect metrics and dependencies in real-time observability mode.</p>
-              <canvas id="live-intel-map" aria-label="Live cluster intelligence map"></canvas>
-              <div id="cluster-tooltip" class="cluster-tooltip"></div>
-              <article class="support-panel">
-                <h4>How KubeSolv Thinks</h4>
-                <ol class="think-steps">
-                  <li><b>Step 1</b>Detect anomaly</li>
-                  <li><b>Step 2</b>Correlate signals</li>
-                  <li><b>Step 3</b>Generate fix plan</li>
-                  <li><b>Step 4</b>Execute or escalate</li>
-                </ol>
-              </article>
-              <div class="intel-meta">
-                <article><span>Impacted Services</span><b>3</b></article>
-                <article><span>Drift Risk</span><b>Low</b></article>
-                <article><span>Confidence</span><b>94%</b></article>
-              </div>
-              <div class="state-legend">
+      <section id="process" class="section shell">
+        <div class="services-header">
+          <div>
+            <div class="badge">How It Works</div>
+            <h2>Smart, Safe, and Operator-First Automation</h2>
+            <p>Monitor, detect, remediate, and explain every action across your clusters.</p>
+          </div>
+        </div>
+        <div class="process-grid">
+          <div class="card process-card">
+            <span class="step">Step 1</span>
+            <h3>Continuous Monitoring</h3>
+            <p>Monitor your cluster continuously with workload and dependency awareness.</p>
+            <div class="checklist">
+              <span>Workload telemetry</span>
+              <span>Dependency mapping</span>
+              <span>Health baselines</span>
+            </div>
+          </div>
+          <div class="card process-card">
+            <span class="step">Step 2</span>
+            <h3>Anomaly Detection</h3>
+            <p>Detect anomalies by combining event streams with resource and rollout telemetry.</p>
+            <div class="checklist">
+              <span>Event correlation</span>
+              <span>Resource drift analysis</span>
+              <span>Release change signals</span>
+            </div>
+          </div>
+          <div class="card process-card">
+            <span class="step">Step 3</span>
+            <h3>Safe Auto-Heal</h3>
+            <p>Auto-heal known failure patterns or suggest safe fixes for operator approval.</p>
+            <div class="checklist">
+              <span>Guardrail playbooks</span>
+              <span>Human approval gates</span>
+              <span>Rollback confidence</span>
+            </div>
+          </div>
+          <div class="card process-card">
+            <span class="step">Step 4</span>
+            <h3>Explainable Ops</h3>
+            <p>Chat with your cluster in real-time and ask direct operational questions.</p>
+            <div class="checklist">
+              <span>Plain-English answers</span>
+              <span>Actionable summaries</span>
+              <span>Audit-ready context</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="demo" class="section shell">
+        <div class="services-header">
+          <div>
+            <div class="badge">Interactive Demo</div>
+            <h2>Live Cluster Intelligence</h2>
+            <p>Hover nodes to inspect metrics and dependencies in real-time observability mode.</p>
+          </div>
+        </div>
+        <div class="demo-grid">
+          <article class="card demo-card">
+            <div class="hero-map-head" aria-hidden="true" style="margin-bottom: 0.55rem;">
+              <span class="hero-map-title">Live Cluster Intelligence</span>
+              <div class="hero-health">
                 <span><i style="background: var(--ok)"></i>Healthy</span>
                 <span><i style="background: var(--warn)"></i>Warning</span>
                 <span><i style="background: var(--bad)"></i>Error</span>
               </div>
+            </div>
+            <div class="intel-strip" aria-hidden="true">
+              <span>Namespace: production</span>
+              <span>Region: us-east-1</span>
+              <span>Refresh: 5s</span>
+            </div>
+            <div style="position: relative;">
+              <canvas id="live-intel-map" aria-label="Live cluster intelligence map"></canvas>
+              <div id="cluster-tooltip" class="cluster-tooltip"></div>
+            </div>
+            <article class="support-panel">
+              <h4>How KubeSolv Thinks</h4>
+              <ol class="think-steps">
+                <li><b>Step 1</b>Detect anomaly</li>
+                <li><b>Step 2</b>Correlate signals</li>
+                <li><b>Step 3</b>Generate fix plan</li>
+                <li><b>Step 4</b>Execute or escalate</li>
+              </ol>
             </article>
-
-            <article class="panel demo-card">
-              <h3>Real-time Alerts Timeline</h3>
-              <ul id="alerts" class="timeline" aria-live="polite"></ul>
-
-              <div class="metrics">
-                <article class="panel metric">
-                  <p>CPU Trend</p>
-                  <canvas id="cpu-spark" width="300" height="72"></canvas>
-                </article>
-                <article class="panel metric">
-                  <p>Memory Trend</p>
-                  <canvas id="mem-spark" width="300" height="72"></canvas>
-                </article>
-              </div>
-
-              <div class="chat">
-                <div class="bubble ask">Why is my pod failing?</div>
-                <div class="bubble answer">`payments-api-7bd8` shows high memory pressure and failing probes. Suggested action: increase memory request and add 5s readiness delay.</div>
-                <div class="bubble ask" style="margin-top:0.6rem;">Can KubeSolv auto-heal this safely?</div>
-                <div class="bubble answer alt">Yes. It can restart unhealthy pods, roll back the latest deployment revision, and post remediation context to Slack for operator approval.</div>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="section reveal" id="cta">
-          <article class="panel cta">
-            <h2>Start Building with KubeSolv Today</h2>
-            <p>Request early access for guided onboarding and production validation workflows.</p>
-            <div class="hero-actions" style="margin-top: 1rem;">
-              <button class="btn btn-primary" type="button" id="open-modal-bottom">Want to Know More?</button>
+            <div class="intel-meta">
+              <article><span>Impacted Services</span><b>3</b></article>
+              <article><span>Drift Risk</span><b>Low</b></article>
+              <article><span>Confidence</span><b>94%</b></article>
+            </div>
+            <div class="state-legend">
+              <span><i style="background: var(--ok)"></i>Healthy</span>
+              <span><i style="background: var(--warn)"></i>Warning</span>
+              <span><i style="background: var(--bad)"></i>Error</span>
             </div>
           </article>
-        </section>
 
-        <section class="section video-banner reveal" id="integrations">
-          <div class="video-strip">
-            <div class="integration-visual">
-              <video class="integration-video" autoplay muted loop playsinline preload="metadata" aria-label="KubeSolv integration animation">
-                <source src="videos/Kubernetes_Logo_Animation_Request.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+          <article class="card demo-card">
+            <h3>Real-time Alerts Timeline</h3>
+            <ul id="alerts" class="timeline" aria-live="polite"></ul>
+
+            <div class="metrics">
+              <article class="card metric">
+                <p>CPU Trend</p>
+                <canvas id="cpu-spark" width="300" height="72"></canvas>
+              </article>
+              <article class="card metric">
+                <p>Memory Trend</p>
+                <canvas id="mem-spark" width="300" height="72"></canvas>
+              </article>
+            </div>
+
+            <div class="chat">
+              <div class="bubble ask">Why is my pod failing?</div>
+              <div class="bubble answer">
+                `payments-api-7bd8` shows high memory pressure and failing probes. Suggested action: increase memory
+                request and add 5s readiness delay.
+              </div>
+              <div class="bubble ask" style="margin-top: 0.6rem;">Can KubeSolv auto-heal this safely?</div>
+              <div class="bubble answer alt">
+                Yes. It can restart unhealthy pods, roll back the latest deployment revision, and post remediation context
+                to Slack for operator approval.
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="case-studies" class="section shell">
+        <div class="services-header">
+          <div>
+            <div class="badge">Use Cases</div>
+            <h2>See How KubeSolv Strengthens Reliability</h2>
+            <p>Real operational wins from AI-driven Kubernetes automation.</p>
+          </div>
+        </div>
+        <div class="cases-grid">
+          <article class="card case-card">
+            <div
+              class="case-image"
+              style="background-image: url('https://framerusercontent.com/images/wZ4QywsLlJwC6C7w4D9W92Oqug.jpeg');"
+            ></div>
+            <strong>"AI-driven forecasting cut incident noise by 40%"</strong>
+            <p>
+              KubeSolv prioritized the highest-risk signals and reduced alert fatigue for a high-scale SaaS platform.
+            </p>
+            <div class="impact">
+              <span>Impact :</span>
+              <span>40% Fewer Alerts</span>
+              <span>30% Faster Triage</span>
+              <span>24/7 Signal Monitoring</span>
+              <span>Clear RCA Paths</span>
+            </div>
+          </article>
+          <article class="card case-card">
+            <div
+              class="case-image"
+              style="background-image: url('https://framerusercontent.com/images/JK0fwwNQempKT9E5v6SvIj81ag.jpeg');"
+            ></div>
+            <strong>"Auto-heal playbooks cut MTTR by 55%"</strong>
+            <p>
+              A fintech team used KubeSolv remediation workflows to recover faster without sacrificing safety controls.
+            </p>
+            <div class="impact">
+              <span>Impact :</span>
+              <span>55% Faster Recovery</span>
+              <span>90% Safer Rollbacks</span>
+              <span>Playbook Governance</span>
+              <span>Audit-Ready Logs</span>
+            </div>
+          </article>
+          <article class="card case-card">
+            <div
+              class="case-image"
+              style="background-image: url('https://framerusercontent.com/images/CDxS3e61UksiMm0oJGi80w7vEA.jpeg');"
+            ></div>
+            <strong>"Resource tuning saved 20% in cloud cost"</strong>
+            <p>
+              KubeSolv recommendations right-sized workloads and trimmed waste across a multi-region cluster estate.
+            </p>
+            <div class="impact">
+              <span>Impact :</span>
+              <span>20% Cost Reduction</span>
+              <span>70+ Hours Saved/Month</span>
+              <span>Predictive Scaling</span>
+              <span>Stable Performance</span>
+            </div>
+          </article>
+          <article class="card case-card">
+            <div
+              class="case-image"
+              style="background-image: url('https://framerusercontent.com/images/TbStOE6QtWLglNJaSOxQJqyQJOE.jpeg');"
+            ></div>
+            <strong>"Reliability insights unlocked 3x faster releases"</strong>
+            <p>
+              A platform team used KubeSolv to accelerate safe deployments while keeping uptime above 99.99%.
+            </p>
+            <div class="impact">
+              <span>Impact :</span>
+              <span>3x Faster Releases</span>
+              <span>99.99% Uptime</span>
+              <span>Risk-Aware Rollouts</span>
+              <span>Executive Reporting</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="benefits" class="section shell">
+        <div class="services-header">
+          <div>
+            <div class="badge">Benefits</div>
+            <h2>Key Benefits of KubeSolv</h2>
+            <p>Deliver resilient Kubernetes operations with less manual toil.</p>
+          </div>
+        </div>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <h4>Faster Incident Response</h4>
+            <p>Reduce MTTR with instant diagnostics, context, and safe remediation suggestions.</p>
+          </div>
+          <div class="benefit-card">
+            <h4>Clear Root Cause Paths</h4>
+            <p>Correlate metrics, logs, and releases into one explainable incident story.</p>
+          </div>
+          <div class="benefit-card">
+            <h4>Safe Automation</h4>
+            <p>Guardrail playbooks keep humans in control while automation handles the toil.</p>
+          </div>
+          <div class="benefit-card">
+            <h4>Cost-Aware Scaling</h4>
+            <p>Forecast load and tune resources before pressure spikes impact availability.</p>
+          </div>
+          <div class="benefit-card">
+            <h4>Always-On Visibility</h4>
+            <p>24/7 monitoring with proactive alerts sent directly to your team channels.</p>
+          </div>
+          <div class="benefit-card">
+            <h4>Operator Confidence</h4>
+            <p>Human-friendly insights and explanations build trust in every action.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" class="section shell">
+        <div class="services-header">
+          <div>
+            <div class="badge">Access Tiers</div>
+            <h2>Choose the KubeSolv Plan That Fits Your Team</h2>
+            <p>Start with early access and scale into full automation.</p>
+          </div>
+          <div class="pricing-toggle" role="group" aria-label="Pricing toggle">
+            <button type="button" class="active" data-plan="monthly">Monthly</button>
+            <button type="button" data-plan="annually">Annually</button>
+          </div>
+        </div>
+        <div class="pricing-grid" data-pricing>
+          <div class="card price-card">
+            <h3>Early Access</h3>
+            <div class="price" data-monthly="$49/month" data-annually="$490/year">$49<span><small>/month</small></span></div>
+            <p>Perfect for teams piloting AI-assisted Kubernetes ops.</p>
+            <a class="btn btn-outline" href="#contact">Request access</a>
+            <div>
+              <strong>What's Included:</strong>
+              <ul class="price-list">
+                <li>Live signal monitoring</li>
+                <li>Alerting to Slack/Telegram</li>
+                <li>Basic root-cause insights</li>
+                <li>Guided onboarding</li>
+              </ul>
             </div>
           </div>
-        </section>
-      </main>
-
-      <footer>
-        <span>© 2026 KubeSolv</span>
-        <div>
-          <a href="#">Docs</a>
+          <div class="card price-card popular">
+            <span class="popular-badge">Popular</span>
+            <h3>Growth</h3>
+            <div class="price" data-monthly="$129/month" data-annually="$1290/year">$129<span><small>/month</small></span></div>
+            <p>For teams ready to automate remediation with confidence.</p>
+            <a class="btn btn-primary" href="#contact">Request access</a>
+            <div>
+              <strong>What's Included:</strong>
+              <ul class="price-list">
+                <li>AI-powered RCA</li>
+                <li>Auto-heal playbooks</li>
+                <li>Cost + scaling recommendations</li>
+                <li>Priority support</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card price-card">
+            <h3>Enterprise</h3>
+            <div class="price" data-monthly="Custom" data-annually="Custom">Custom</div>
+            <p>For multi-cluster environments and advanced governance.</p>
+            <a class="btn btn-outline" href="#contact">Talk to us</a>
+            <div>
+              <strong>What's Included:</strong>
+              <ul class="price-list">
+                <li>Dedicated reliability advisor</li>
+                <li>Custom automation policies</li>
+                <li>Advanced compliance workflows</li>
+                <li>24/7 support</li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </footer>
-    </div>
+      </section>
+
+      <section id="testimonials" class="section shell">
+        <div class="services-header">
+          <div>
+            <div class="badge">Testimonials</div>
+            <h2>Trusted by Reliability Leaders</h2>
+            <p>Operators love how fast they can move with KubeSolv.</p>
+          </div>
+        </div>
+        <div class="testimonials-grid">
+          <div class="card testimonial">
+            <p>
+              "KubeSolv cut our incident triage time in half. It surfaces the right signals instantly and keeps the team
+              aligned on next steps."
+            </p>
+            <div style="display: flex; gap: 0.8rem; align-items: center;">
+              <img src="https://framerusercontent.com/images/Ja6vnrdyxR6DoP2iS9CRMnsQXSo.jpg" alt="James Carter" />
+              <div>
+                <strong>James Carter</strong>
+                <div class="muted">SRE Lead at TechFlow</div>
+              </div>
+            </div>
+          </div>
+          <div class="card testimonial">
+            <p>
+              "Auto-heal playbooks are a game-changer. We maintain safety controls while reducing pager fatigue across the
+              team."
+            </p>
+            <div style="display: flex; gap: 0.8rem; align-items: center;">
+              <img src="https://framerusercontent.com/images/prJVkx4ybEf6YSyZs9EZDABPto.jpg" alt="Sophia Martinez" />
+              <div>
+                <strong>Sophia Martinez</strong>
+                <div class="muted">Platform Manager at NexaCorp</div>
+              </div>
+            </div>
+          </div>
+          <div class="card testimonial">
+            <p>
+              "We finally have explainable RCA with confidence scores. Leadership gets clarity without drowning the team in
+              dashboards."
+            </p>
+            <div style="display: flex; gap: 0.8rem; align-items: center;">
+              <img src="https://framerusercontent.com/images/HDIEzwzzph6mZtBFYG3fS721U.jpg" alt="David Reynolds" />
+              <div>
+                <strong>David Reynolds</strong>
+                <div class="muted">Head of Infrastructure at GrowthPeak</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="section shell">
+        <div class="services-header">
+          <div>
+            <div class="badge">FAQs</div>
+            <h2>Answers for Kubernetes Teams</h2>
+            <p>Quick answers to your KubeSolv questions.</p>
+          </div>
+        </div>
+        <div style="margin-top: 2rem;">
+          <details>
+            <summary>How does KubeSolv collect cluster data?</summary>
+            <p>KubeSolv integrates with your existing telemetry stack to ingest logs, events, and metrics securely.</p>
+          </details>
+          <details>
+            <summary>Can we control which actions are automated?</summary>
+            <p>Yes. You configure guardrails, approval gates, and playbook scope before automation executes.</p>
+          </details>
+          <details>
+            <summary>Does it support multi-cluster environments?</summary>
+            <p>Multi-cluster support is available on Growth and Enterprise tiers with unified visibility.</p>
+          </details>
+          <details>
+            <summary>What messaging platforms are supported?</summary>
+            <p>Slack and Telegram alerts are supported today, with more integrations on the roadmap.</p>
+          </details>
+        </div>
+      </section>
+
+      <section id="contact" class="section shell">
+        <div class="card cta">
+          <h2>Start Building with KubeSolv Today</h2>
+          <p>Request early access for guided onboarding and production validation workflows.</p>
+          <div class="hero-actions" style="justify-content: center;">
+            <button class="btn btn-primary" type="button" id="open-modal-bottom">Want to Know More?</button>
+          </div>
+          <div class="cta-links">
+            <a href="#services">Explore features</a>
+            <a href="#demo">View demo</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="shell">
+      <div class="footer-grid">
+        <div class="newsletter">
+          <strong>KUBESOLV</strong>
+          <p>AI-powered Kubernetes operations for modern reliability teams.</p>
+          <div>
+            <p style="margin-bottom: 0.4rem;">Join our newsletter</p>
+            <input type="email" placeholder="name@email.com" />
+          </div>
+        </div>
+        <div class="footer-links">
+          <strong>Product</strong>
+          <a href="#services">Features</a>
+          <a href="#process">How it works</a>
+          <a href="#demo">Demo</a>
+          <a href="#pricing">Pricing</a>
+        </div>
+        <div class="footer-links">
+          <strong>Company</strong>
+          <a href="#top">Home</a>
+          <a href="#case-studies">Use cases</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-links">
+          <strong>Resources</strong>
+          <a href="#">Docs</a>
+          <a href="#">Status</a>
+          <a href="#">Security</a>
+          <a href="#">Privacy</a>
+        </div>
+      </div>
+    </footer>
 
     <div class="modal" id="lead-modal" aria-hidden="true">
       <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="lead-title">
@@ -1218,76 +1803,128 @@
 
     <script>
       (function () {
-        const reveals = Array.from(document.querySelectorAll('.reveal'));
-        const io = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) entry.target.classList.add('in');
+        const shouldReduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!shouldReduceMotion) {
+          const revealTargets = document.querySelectorAll('.section, footer, .nav');
+          revealTargets.forEach((el) => el.classList.add('reveal'));
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('is-in');
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.15, rootMargin: '0px 0px -10% 0px' }
+          );
+          revealTargets.forEach((el) => io.observe(el));
+          revealTargets.forEach((el) => {
+            const r = el.getBoundingClientRect();
+            if (r.top < window.innerHeight * 0.9) {
+              el.classList.add('is-in');
+              io.unobserve(el);
+            }
           });
-        }, { threshold: 0.12 });
-        reveals.forEach((el) => io.observe(el));
+        }
+
+        const toggleButtons = document.querySelectorAll('.pricing-toggle button');
+        const pricingCards = document.querySelectorAll('[data-pricing] .price');
+
+        if (toggleButtons.length) {
+          toggleButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+              toggleButtons.forEach((btn) => btn.classList.remove('active'));
+              button.classList.add('active');
+              const plan = button.dataset.plan;
+
+              pricingCards.forEach((price) => {
+                const next = price.dataset[plan];
+                if (next) {
+                  const match = next.match(/^\s*([^/]+)\s*\/\s*(.+)\s*$/);
+                  if (match) {
+                    const value = match[1].trim();
+                    const unit = match[2].trim();
+                    price.innerHTML = `${value}<span><small>/${unit}</small></span>`;
+                  } else {
+                    price.textContent = next;
+                  }
+                }
+              });
+            });
+          });
+        }
 
         const modal = document.getElementById('lead-modal');
+        const openModalButtons = [document.getElementById('open-modal'), document.getElementById('open-modal-bottom')].filter(Boolean);
+        const closeModalButton = document.getElementById('close-modal');
+
         const openModal = () => {
+          if (!modal) return;
           modal.classList.add('open');
           modal.setAttribute('aria-hidden', 'false');
         };
         const closeModal = () => {
+          if (!modal) return;
           modal.classList.remove('open');
           modal.setAttribute('aria-hidden', 'true');
         };
 
-        document.getElementById('open-modal').addEventListener('click', openModal);
-        document.getElementById('open-modal-bottom').addEventListener('click', openModal);
-        document.getElementById('close-modal').addEventListener('click', closeModal);
-        modal.addEventListener('click', (e) => {
-          if (e.target === modal) closeModal();
-        });
+        openModalButtons.forEach((btn) => btn.addEventListener('click', openModal));
+        if (closeModalButton) closeModalButton.addEventListener('click', closeModal);
+        if (modal) {
+          modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+          });
+        }
         document.addEventListener('keydown', (e) => {
           if (e.key === 'Escape') closeModal();
         });
 
         const form = document.getElementById('lead-form');
         const status = document.getElementById('form-status');
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          status.textContent = 'Submitting...';
-          const payload = {
-            name: form.name.value.trim(),
-            email: form.email.value.trim(),
-            source: 'kubesolv_landing',
-            submittedAt: new Date().toISOString()
-          };
+        if (form && status) {
+          form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            status.textContent = 'Submitting...';
+            const payload = {
+              name: form.name.value.trim(),
+              email: form.email.value.trim(),
+              source: 'kubesolv_landing',
+              submittedAt: new Date().toISOString()
+            };
 
-          let ok = false;
-          try {
-            const res = await fetch('/api/kubesolv-leads', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(payload)
-            });
-            ok = res.ok;
-          } catch (_err) {}
-
-          if (!ok) {
+            let ok = false;
             try {
-              await fetch('https://example.com/webhook/kubesolv-leads', {
+              const res = await fetch('/api/kubesolv-leads', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
               });
-              ok = true;
+              ok = res.ok;
             } catch (_err) {}
-          }
 
-          if (!ok) {
-            localStorage.setItem('kubesolvLeadDraft', JSON.stringify(payload));
-            status.textContent = 'Saved locally. Connect API/webhook to complete submission.';
-            return;
-          }
+            if (!ok) {
+              try {
+                await fetch('https://example.com/webhook/kubesolv-leads', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(payload)
+                });
+                ok = true;
+              } catch (_err) {}
+            }
 
-          status.textContent = 'Thanks. We received your request.';
-          form.reset();
-        });
+            if (!ok) {
+              localStorage.setItem('kubesolvLeadDraft', JSON.stringify(payload));
+              status.textContent = 'Saved locally. Connect API/webhook to complete submission.';
+              return;
+            }
+
+            status.textContent = 'Thanks. We received your request.';
+            form.reset();
+          });
+        }
 
         const signalTokens = {
           detect: document.querySelector('[data-signal="detect"]'),
@@ -1296,11 +1933,11 @@
         };
         let tokenResetTimer = null;
         const pulseSignal = (type) => {
-          Object.values(signalTokens).forEach((el) => el.classList.remove('alert'));
+          Object.values(signalTokens).forEach((el) => el && el.classList.remove('alert'));
           if (signalTokens[type]) signalTokens[type].classList.add('alert');
           clearTimeout(tokenResetTimer);
           tokenResetTimer = setTimeout(() => {
-            Object.values(signalTokens).forEach((el) => el.classList.remove('alert'));
+            Object.values(signalTokens).forEach((el) => el && el.classList.remove('alert'));
           }, 1400);
         };
 
@@ -1560,6 +2197,9 @@
         };
 
         const liveIntelCanvas = document.getElementById('live-intel-map');
+        const alertFeed = document.getElementById('alerts');
+        const cpuSpark = document.getElementById('cpu-spark');
+        const memSpark = document.getElementById('mem-spark');
 
         const onHeroMove = (event) => {
           const rect = liveIntelCanvas.getBoundingClientRect();
@@ -1568,8 +2208,8 @@
           const hit = hitNode(x, y, rect.width, rect.height, 'hero');
           hoveredId = hit ? hit.id : null;
 
-          if (!hit) {
-            tooltip.classList.remove('show');
+          if (!hit || !tooltip) {
+            if (tooltip) tooltip.classList.remove('show');
             return;
           }
 
@@ -1581,234 +2221,239 @@
             .map(([a, b]) => (a === hit.id ? byId(b).label : byId(a).label))
             .slice(0, 3)
             .join(', ') || 'None';
-          tooltip.innerHTML = `<strong>${hit.label}</strong><div class=\"meta\">${hit.role}</div>CPU: ${hit.cpu}%<br />Memory: ${hit.mem}%<br />Restarts: ${hit.restarts}<br />Deps: ${deps}`;
+          tooltip.innerHTML = `<strong>${hit.label}</strong><div class="meta">${hit.role}</div>CPU: ${hit.cpu}%<br />Memory: ${hit.mem}%<br />Restarts: ${hit.restarts}<br />Deps: ${deps}`;
         };
 
-        liveIntelCanvas.addEventListener('mousemove', onHeroMove);
-        liveIntelCanvas.addEventListener('mouseleave', () => {
-          hoveredId = null;
-          tooltip.classList.remove('show');
-        });
-
-        const alertFeed = document.getElementById('alerts');
-        const eventsPool = [
-          { text: 'OOMKilled on payments pod', level: 'error', signal: 'detect', target: 'payments' },
-          { text: 'ImagePullBackOff on billing worker', level: 'warning', signal: 'detect', target: 'billing' },
-          { text: 'Alert pushed to Slack + Telegram', level: 'warning', signal: 'notify', target: 'metrics' },
-          { text: 'Auto-heal restart completed for auth pod', level: 'healthy', signal: 'heal', target: 'auth' },
-          { text: 'Scaling recommendation generated for worker', level: 'healthy', signal: 'notify', target: 'worker' }
-        ];
-
-        const addAlert = (eventItem) => {
-          const li = document.createElement('li');
-          li.innerHTML = `<span class="t-dot" style="background:${statusColor[eventItem.level] || statusColor.warning}"></span><span>${eventItem.text}</span>`;
-          alertFeed.prepend(li);
-          while (alertFeed.children.length > 6) alertFeed.removeChild(alertFeed.lastChild);
-          pulseSignal(eventItem.signal);
-          hoveredId = eventItem.target;
-          setTimeout(() => {
-            if (hoveredId === eventItem.target) hoveredId = null;
-          }, 1300);
-        };
-
-        addAlert({ text: 'Initial scan complete for production namespace', level: 'healthy', signal: 'detect', target: 'ingress' });
-        addAlert({ text: 'Warning: memory pressure in billing pod', level: 'warning', signal: 'notify', target: 'billing' });
-
-        const randomizeNodeState = () => {
-          const idx = Math.floor(Math.random() * nodes.length);
-          const states = ['healthy', 'warning', 'error'];
-          const n = nodes[idx];
-          n.status = states[Math.floor(Math.random() * states.length)];
-          n.cpu = Math.max(28, Math.min(96, n.cpu + Math.floor(Math.random() * 21) - 10));
-          n.mem = Math.max(24, Math.min(98, n.mem + Math.floor(Math.random() * 18) - 8));
-          n.restarts = Math.max(0, Math.min(8, n.restarts + Math.floor(Math.random() * 3) - 1));
-        };
-
-        setInterval(() => {
-          randomizeNodeState();
-          const e = eventsPool[Math.floor(Math.random() * eventsPool.length)];
-          addAlert(e);
-        }, 2500);
-
-        const cpuSpark = document.getElementById('cpu-spark');
-        const memSpark = document.getElementById('mem-spark');
-        let cpuSeries = [52, 58, 62, 56, 68, 64, 71, 66, 69];
-        let memSeries = [48, 50, 47, 55, 57, 62, 60, 64, 63];
-        let t = 0;
-
-        const drawSpark = (canvas, arr, color) => {
-          const ctx = canvas.getContext('2d');
-          const w = canvas.width;
-          const h = canvas.height;
-          ctx.clearRect(0, 0, w, h);
-          for (let i = 0; i < 4; i += 1) {
-            const gy = (h / 4) * i + 6;
-            ctx.beginPath();
-            ctx.moveTo(4, gy);
-            ctx.lineTo(w - 4, gy);
-            ctx.strokeStyle = 'rgba(95, 128, 202, 0.14)';
-            ctx.lineWidth = 1;
-            ctx.stroke();
-          }
-          ctx.beginPath();
-          arr.forEach((v, i) => {
-            const x = (i / (arr.length - 1)) * (w - 8) + 4;
-            const y = h - ((v - 10) / 100) * (h - 12) - 6;
-            if (i === 0) ctx.moveTo(x, y);
-            else ctx.lineTo(x, y);
+        if (liveIntelCanvas) {
+          liveIntelCanvas.addEventListener('mousemove', onHeroMove);
+          liveIntelCanvas.addEventListener('mouseleave', () => {
+            hoveredId = null;
+            if (tooltip) tooltip.classList.remove('show');
           });
-          ctx.strokeStyle = color;
-          ctx.lineWidth = 3;
-          ctx.lineCap = 'round';
-          ctx.lineJoin = 'round';
-          ctx.stroke();
-        };
+        }
 
-        const tickSpark = () => {
-          t += 1;
-          const cpuBase = 58 + Math.sin(t / 2.6) * 8 + Math.sin(t / 7.2) * 4;
-          const memBase = 54 + Math.sin(t / 3.4 + 0.8) * 7 + Math.sin(t / 8.8) * 3;
-          cpuSeries = cpuSeries.slice(1).concat(Math.max(32, Math.min(92, cpuBase + (Math.random() * 5 - 2.5))));
-          memSeries = memSeries.slice(1).concat(Math.max(30, Math.min(90, memBase + (Math.random() * 4 - 2))));
-          drawSpark(cpuSpark, cpuSeries, '#3f6eff');
-          drawSpark(memSpark, memSeries, '#5f7cf4');
-        };
+        if (alertFeed) {
+          const eventsPool = [
+            { text: 'OOMKilled on payments pod', level: 'error', signal: 'detect', target: 'payments' },
+            { text: 'ImagePullBackOff on billing worker', level: 'warning', signal: 'detect', target: 'billing' },
+            { text: 'Alert pushed to Slack + Telegram', level: 'warning', signal: 'notify', target: 'metrics' },
+            { text: 'Auto-heal restart completed for auth pod', level: 'healthy', signal: 'heal', target: 'auth' },
+            { text: 'Scaling recommendation generated for worker', level: 'healthy', signal: 'notify', target: 'worker' }
+          ];
 
-        tickSpark();
-        setInterval(tickSpark, 1700);
+          const addAlert = (eventItem) => {
+            const li = document.createElement('li');
+            li.innerHTML = `<span class="t-dot" style="background:${statusColor[eventItem.level] || statusColor.warning}"></span><span>${eventItem.text}</span>`;
+            alertFeed.prepend(li);
+            while (alertFeed.children.length > 6) alertFeed.removeChild(alertFeed.lastChild);
+            pulseSignal(eventItem.signal);
+            hoveredId = eventItem.target;
+            setTimeout(() => {
+              if (hoveredId === eventItem.target) hoveredId = null;
+            }, 1300);
+          };
+
+          addAlert({ text: 'Initial scan complete for production namespace', level: 'healthy', signal: 'detect', target: 'ingress' });
+          addAlert({ text: 'Warning: memory pressure in billing pod', level: 'warning', signal: 'notify', target: 'billing' });
+
+          const randomizeNodeState = () => {
+            const idx = Math.floor(Math.random() * nodes.length);
+            const states = ['healthy', 'warning', 'error'];
+            const n = nodes[idx];
+            n.status = states[Math.floor(Math.random() * states.length)];
+            n.cpu = Math.max(28, Math.min(96, n.cpu + Math.floor(Math.random() * 21) - 10));
+            n.mem = Math.max(24, Math.min(98, n.mem + Math.floor(Math.random() * 18) - 8));
+            n.restarts = Math.max(0, Math.min(8, n.restarts + Math.floor(Math.random() * 3) - 1));
+          };
+
+          setInterval(() => {
+            randomizeNodeState();
+            const e = eventsPool[Math.floor(Math.random() * eventsPool.length)];
+            addAlert(e);
+          }, 2500);
+        }
+
+        if (cpuSpark && memSpark) {
+          let cpuSeries = [52, 58, 62, 56, 68, 64, 71, 66, 69];
+          let memSeries = [48, 50, 47, 55, 57, 62, 60, 64, 63];
+          let t = 0;
+
+          const drawSpark = (canvas, arr, color) => {
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width;
+            const h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+            for (let i = 0; i < 4; i += 1) {
+              const gy = (h / 4) * i + 6;
+              ctx.beginPath();
+              ctx.moveTo(4, gy);
+              ctx.lineTo(w - 4, gy);
+              ctx.strokeStyle = 'rgba(95, 128, 202, 0.14)';
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+            ctx.beginPath();
+            arr.forEach((v, i) => {
+              const x = (i / (arr.length - 1)) * (w - 8) + 4;
+              const y = h - ((v - 10) / 100) * (h - 12) - 6;
+              if (i === 0) ctx.moveTo(x, y);
+              else ctx.lineTo(x, y);
+            });
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 3;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.stroke();
+          };
+
+          const tickSpark = () => {
+            t += 1;
+            const cpuBase = 58 + Math.sin(t / 2.6) * 8 + Math.sin(t / 7.2) * 4;
+            const memBase = 54 + Math.sin(t / 3.4 + 0.8) * 7 + Math.sin(t / 8.8) * 3;
+            cpuSeries = cpuSeries.slice(1).concat(Math.max(32, Math.min(92, cpuBase + (Math.random() * 5 - 2.5))));
+            memSeries = memSeries.slice(1).concat(Math.max(30, Math.min(90, memBase + (Math.random() * 4 - 2))));
+            drawSpark(cpuSpark, cpuSeries, '#3f6eff');
+            drawSpark(memSpark, memSeries, '#5f7cf4');
+          };
+
+          tickSpark();
+          setInterval(tickSpark, 1700);
+        }
 
         const bgCanvas = document.getElementById('bg-canvas');
-        const bgCtx = bgCanvas.getContext('2d');
-        const bgNodes = [];
-        const bgHexes = [];
-        const bgFlows = [];
-        const BG_COUNT = 96;
+        if (bgCanvas) {
+          const bgCtx = bgCanvas.getContext('2d');
+          const bgNodes = [];
+          const bgHexes = [];
+          const bgFlows = [];
+          const BG_COUNT = 96;
 
-        const resizeBg = () => {
-          const dpr = Math.min(window.devicePixelRatio || 1, 2);
-          bgCanvas.width = Math.floor(window.innerWidth * dpr);
-          bgCanvas.height = Math.floor(window.innerHeight * dpr);
-          bgCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
-          if (!bgNodes.length) {
-            for (let i = 0; i < BG_COUNT; i += 1) {
-              bgNodes.push({
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-                vx: (Math.random() - 0.5) * 0.26,
-                vy: (Math.random() - 0.5) * 0.26,
-                r: Math.random() * 1.6 + 0.7
-              });
-            }
-          }
-
-          if (!bgHexes.length) {
-            for (let i = 0; i < 64; i += 1) {
-              bgHexes.push({
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-                size: 8 + Math.random() * 8,
-                drift: (Math.random() - 0.5) * 0.08
-              });
-            }
-          }
-
-          if (!bgFlows.length) {
-            for (let i = 0; i < 28; i += 1) {
-              bgFlows.push({
-                y: (window.innerHeight / 28) * i + Math.random() * 24,
-                phase: Math.random() * Math.PI * 2,
-                speed: 0.004 + Math.random() * 0.003
-              });
-            }
-          }
-        };
-
-        const drawBgHex = (x, y, size, alpha) => {
-          bgCtx.beginPath();
-          for (let i = 0; i < 6; i += 1) {
-            const a = (Math.PI / 3) * i - Math.PI / 2;
-            const px = x + Math.cos(a) * size;
-            const py = y + Math.sin(a) * size;
-            if (i === 0) bgCtx.moveTo(px, py);
-            else bgCtx.lineTo(px, py);
-          }
-          bgCtx.closePath();
-          bgCtx.strokeStyle = `rgba(71, 120, 201, ${alpha})`;
-          bgCtx.lineWidth = 1;
-          bgCtx.stroke();
-        };
-
-        const tickBg = () => {
-          const w = window.innerWidth;
-          const h = window.innerHeight;
-          bgCtx.clearRect(0, 0, w, h);
-
-          bgFlows.forEach((f, idx) => {
-            f.phase += f.speed;
-            bgCtx.beginPath();
-            for (let x = 0; x <= w; x += 24) {
-              const y = f.y + Math.sin((x / 130) + f.phase + idx * 0.26) * 8;
-              if (x === 0) bgCtx.moveTo(x, y);
-              else bgCtx.lineTo(x, y);
-            }
-            bgCtx.strokeStyle = 'rgba(40, 132, 186, 0.08)';
-            bgCtx.lineWidth = 1.1;
-            bgCtx.stroke();
-          });
-
-          bgHexes.forEach((hx) => {
-            hx.y += hx.drift;
-            if (hx.y < -20) hx.y = h + 20;
-            if (hx.y > h + 20) hx.y = -20;
-            drawBgHex(hx.x, hx.y, hx.size, 0.11);
-          });
-
-          bgNodes.forEach((n) => {
-            n.x += n.vx;
-            n.y += n.vy;
-            if (n.x < -7) n.x = w + 7;
-            if (n.x > w + 7) n.x = -7;
-            if (n.y < -7) n.y = h + 7;
-            if (n.y > h + 7) n.y = -7;
-            bgCtx.beginPath();
-            bgCtx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-            bgCtx.fillStyle = 'rgba(39, 136, 185, 0.16)';
-            bgCtx.fill();
-          });
-
-          for (let i = 0; i < bgNodes.length; i += 1) {
-            for (let j = i + 1; j < bgNodes.length; j += 1) {
-              const a = bgNodes[i];
-              const b = bgNodes[j];
-              const d = Math.hypot(a.x - b.x, a.y - b.y);
-              if (d < 120) {
-                const alpha = (1 - d / 120) * 0.08;
-                bgCtx.beginPath();
-                bgCtx.moveTo(a.x, a.y);
-                bgCtx.lineTo(b.x, b.y);
-                bgCtx.strokeStyle = `rgba(66,132,196,${alpha})`;
-                bgCtx.stroke();
+          const resizeBg = () => {
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            bgCanvas.width = Math.floor(window.innerWidth * dpr);
+            bgCanvas.height = Math.floor(window.innerHeight * dpr);
+            bgCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            if (!bgNodes.length) {
+              for (let i = 0; i < BG_COUNT; i += 1) {
+                bgNodes.push({
+                  x: Math.random() * window.innerWidth,
+                  y: Math.random() * window.innerHeight,
+                  vx: (Math.random() - 0.5) * 0.26,
+                  vy: (Math.random() - 0.5) * 0.26,
+                  r: Math.random() * 1.6 + 0.7
+                });
               }
             }
-          }
 
-          requestAnimationFrame(tickBg);
-        };
+            if (!bgHexes.length) {
+              for (let i = 0; i < 64; i += 1) {
+                bgHexes.push({
+                  x: Math.random() * window.innerWidth,
+                  y: Math.random() * window.innerHeight,
+                  size: 8 + Math.random() * 8,
+                  drift: (Math.random() - 0.5) * 0.08
+                });
+              }
+            }
 
-        const render = () => {
-          drawLiveIntelCluster(liveIntelCanvas);
-          requestAnimationFrame(render);
-        };
+            if (!bgFlows.length) {
+              for (let i = 0; i < 28; i += 1) {
+                bgFlows.push({
+                  y: (window.innerHeight / 28) * i + Math.random() * 24,
+                  phase: Math.random() * Math.PI * 2,
+                  speed: 0.004 + Math.random() * 0.003
+                });
+              }
+            }
+          };
 
-        const resizeAll = () => {
-          fitCanvas(liveIntelCanvas);
-          resizeBg();
-        };
+          const drawBgHex = (x, y, size, alpha) => {
+            bgCtx.beginPath();
+            for (let i = 0; i < 6; i += 1) {
+              const a = (Math.PI / 3) * i - Math.PI / 2;
+              const px = x + Math.cos(a) * size;
+              const py = y + Math.sin(a) * size;
+              if (i === 0) bgCtx.moveTo(px, py);
+              else bgCtx.lineTo(px, py);
+            }
+            bgCtx.closePath();
+            bgCtx.strokeStyle = `rgba(71, 120, 201, ${alpha})`;
+            bgCtx.lineWidth = 1;
+            bgCtx.stroke();
+          };
 
-        window.addEventListener('resize', resizeAll);
-        resizeAll();
-        tickBg();
-        render();
+          const tickBg = () => {
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+            bgCtx.clearRect(0, 0, w, h);
+
+            bgFlows.forEach((f, idx) => {
+              f.phase += f.speed;
+              bgCtx.beginPath();
+              for (let x = 0; x <= w; x += 24) {
+                const y = f.y + Math.sin((x / 130) + f.phase + idx * 0.26) * 8;
+                if (x === 0) bgCtx.moveTo(x, y);
+                else bgCtx.lineTo(x, y);
+              }
+              bgCtx.strokeStyle = 'rgba(40, 132, 186, 0.08)';
+              bgCtx.lineWidth = 1.1;
+              bgCtx.stroke();
+            });
+
+            bgHexes.forEach((hx) => {
+              hx.y += hx.drift;
+              if (hx.y < -20) hx.y = h + 20;
+              if (hx.y > h + 20) hx.y = -20;
+              drawBgHex(hx.x, hx.y, hx.size, 0.11);
+            });
+
+            bgNodes.forEach((n) => {
+              n.x += n.vx;
+              n.y += n.vy;
+              if (n.x < -7) n.x = w + 7;
+              if (n.x > w + 7) n.x = -7;
+              if (n.y < -7) n.y = h + 7;
+              if (n.y > h + 7) n.y = -7;
+              bgCtx.beginPath();
+              bgCtx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+              bgCtx.fillStyle = 'rgba(39, 136, 185, 0.16)';
+              bgCtx.fill();
+            });
+
+            for (let i = 0; i < bgNodes.length; i += 1) {
+              for (let j = i + 1; j < bgNodes.length; j += 1) {
+                const a = bgNodes[i];
+                const b = bgNodes[j];
+                const d = Math.hypot(a.x - b.x, a.y - b.y);
+                if (d < 120) {
+                  const alpha = (1 - d / 120) * 0.08;
+                  bgCtx.beginPath();
+                  bgCtx.moveTo(a.x, a.y);
+                  bgCtx.lineTo(b.x, b.y);
+                  bgCtx.strokeStyle = `rgba(66,132,196,${alpha})`;
+                  bgCtx.stroke();
+                }
+              }
+            }
+
+            requestAnimationFrame(tickBg);
+          };
+
+          const render = () => {
+            if (liveIntelCanvas) drawLiveIntelCluster(liveIntelCanvas);
+            requestAnimationFrame(render);
+          };
+
+          const resizeAll = () => {
+            if (liveIntelCanvas) fitCanvas(liveIntelCanvas);
+            resizeBg();
+          };
+
+          window.addEventListener('resize', resizeAll);
+          resizeAll();
+          tickBg();
+          render();
+        }
       })();
     </script>
   </body>
